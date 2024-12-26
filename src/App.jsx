@@ -34,9 +34,7 @@ export default function App() {
       <section id="projects" className="">
         <ActiveProjects />
       </section>
-      <section id="projects" className="">
-        <ContactPage />
-      </section>
+      
 
       {/* Footer Section */}
       <footer id="contact" className="bg-gray-800 text-gray-200">

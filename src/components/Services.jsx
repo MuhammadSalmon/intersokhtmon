@@ -1,181 +1,207 @@
-import React, { useState } from "react";
-import img1 from "../assets/upravlenie_1.jpg";
+import React, { useState, useEffect } from "react";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { motion } from "framer-motion";
 import image1 from "../assets/about.jpg";
 import image2 from "../assets/blog-1.jpg";
 import image3 from "../assets/blog-2.jpg";
 import image4 from "../assets/blog-3.jpg";
-const services = [
+
+const projects = [
   {
-    title: "Управление проектом",
-    description: "От разработки концепции проекта до ввода объекта в эксплуатацию",
-    images: [
-      img1,
-      image1,
-      image2,
-      image3,
-      image4,
-    ],
+    title: "УПРАВЛЕНИЕ ПРОЕКТОМ",
+    description:
+      "УПРАВЛЕНИЕ ПРОЕКТОМ – от разработки концепции проекта до ввода объекта в эксплуатацию",
+    progress: 70,
+    images: [image1, image2, image3, image4],
+    category: "УПРАВЛЕНИЕ ПРОЕКТОМ",
   },
   {
-    title: "Проектирование",
+    title: "ПРОЕКТИРОВАНИЕ",
     description:
-      "От разработки эскизного проекта до получения положительного заключения экспертизы и авторского надзора",
+      "ПРОЕКТИРОВАНИЕ - от разработки эскизного проекта до получения положительного заключения экспертизы и авторского надзора",
+    progress: 40,
     images: [
-      "https://via.placeholder.com/300x200?text=Design+1",
-      "https://via.placeholder.com/300x200?text=Design+2",
-      "https://via.placeholder.com/300x200?text=Design+3",
+      "https://via.placeholder.com/400x300?text=Smart+City+1",
+      "https://via.placeholder.com/400x300?text=Smart+City+2",
     ],
+    category: "ПРОЕКТИРОВАНИЕ",
   },
   {
-    title: "Строительный контроль",
+    title: "СТРОИТЕЛЬНЫЙ КОНТРОЛЬ",
     description:
-      "Управление качеством и сроками реализации проекта от начала строительства до ввода объекта в эксплуатацию",
+      "СТРОИТЕЛЬНЫЙ КОНТРОЛЬ - управление качеством и сроками реализации проекта от начала строительства до ввода объекта в эксплуатацию",
+    progress: 85,
     images: [
-      "https://via.placeholder.com/300x200?text=Control+1",
-      "https://via.placeholder.com/300x200?text=Control+2",
+      "https://via.placeholder.com/400x300?text=Urban+Farming+1",
+      "https://via.placeholder.com/400x300?text=Urban+Farming+2",
     ],
+    category: "Agriculture",
   },
   {
-    title: "Управление бюджетом",
+    title: "УПРАВЛЕНИЕ БЮДЖЕТОМ",
     description:
-      "От анализа сметной стоимости проекта и управления стоимостью проекта на протяжении строительного процесса",
+      "УПРАВЛЕНИЕ БЮДЖЕТОМ - от анализа сметной стоимости проекта и управления стоимостью проекта на протяжении строительного процесса",
+    progress: 60,
     images: [
-      "https://via.placeholder.com/300x200?text=Budget+1",
-      "https://via.placeholder.com/300x200?text=Budget+2",
+      "https://via.placeholder.com/400x300?text=AI+Healthcare+1",
+      "https://via.placeholder.com/400x300?text=AI+Healthcare+2",
     ],
-  },
-  {
-    title: "Материально-техническая база",
-    description:
-      "ООО «Интерсохтмон» имеет собственную материально-техническую базу и автотранспорт различных типов в городе Душанбе, включая самосвалы, автопогрузчики, автобетоносмесители, автокраны и автобетононасосы.",
-    images: [
-      "https://via.placeholder.com/300x200?text=Equipment+1",
-      "https://via.placeholder.com/300x200?text=Equipment+2",
-    ],
-  },
-  {
-    title: "Завод МБСУ №1 (GURIS)",
-    description:
-      "Производительность бетона: 120м3/час. Производительность инертных материалов: 120м3/час.",
-    images: [
-      "https://via.placeholder.com/300x200?text=Plant+1",
-      "https://via.placeholder.com/300x200?text=Plant+2",
-    ],
-  },
-  {
-    title: "Завод железобетонных изделий",
-    description:
-      "Завод по изготовлению железобетонных колодцев и лотков. Дополнительно доступны экскаваторы (колёсные и гусеничные), башенные краны и служебные легковые автомашины.",
-    images: [
-      "https://via.placeholder.com/300x200?text=Concrete+1",
-      "https://via.placeholder.com/300x200?text=Concrete+2",
-    ],
+    category: "УПРАВЛЕНИЕ БЮДЖЕТОМ",
   },
 ];
+
 const ServicesPage = () => {
+  const [modalData, setModalData] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentImages, setCurrentImages] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleOpenModal = (project) => {
+    setModalData(project);
+    setCurrentImageIndex(0); // Reset to the first image
+  };
+
+  const handleCloseModal = () => {
+    setModalData(null);
+    setCurrentImageIndex(0);
+  };
+
+  const handleNextImage = () => {
+    if (modalData) {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % modalData.images.length
+      );
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (modalData) {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex - 1 + modalData.images.length) % modalData.images.length
+      );
+    }
+  };
+
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   const toggleShow = () => {
     setShowAll(!showAll);
   };
 
-  const openModal = (images) => {
-    setCurrentImages(images);
-    setCurrentIndex(0);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % currentImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? currentImages.length - 1 : prevIndex - 1
-    );
-  };
-
-  const displayedServices = showAll ? services : services.slice(0, 3);
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") handleCloseModal();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
-    <div className="bg-gray-100 min-h-[80vh] py-12 px-6 md:px-12 lg:px-24">
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8">
-        Наши Услуги
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {displayedServices.map((service, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
-            onClick={() => openModal(service.images)}
-          >
-            <h2 className="text-2xl font-bold text-blue-600 mb-4">
-              {service.title}
-            </h2>
-            <p className="text-gray-600 mb-4">{service.description}</p>
-            <div>
-              <img
-                src={service.images[0]}
-                alt={service.title}
-                className="w-full h-48 object-cover rounded-md cursor-pointer"
-              />
-            </div>
+    <section className="py-12 bg-gray-100 dark:bg-gray-900">
+      <div className="container mx-auto px-6">
+        <h2 className="text-3xl font-bold text-gray-900 text-center dark:text-gray-100 mb-6">
+        НАШИ УСЛУГ
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayedProjects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <div className="relative">
+                <img
+                  src={project.images[0]} // Thumbnail
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                  {project.description.length > 150
+                    ? `${project.description.slice(0, 150)}...`
+                    : project.description}
+                </p>
+                
+                <button
+                  onClick={() => handleOpenModal(project)}
+                  className="text-blue-500 hover:underline text-sm font-medium mt-4 block"
+                >
+                  Подробнее
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {projects.length > 3 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={toggleShow}
+              className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
+            >
+              {showAll ? "Показат менше" : "Показат болше"}
+            </button>
           </div>
-        ))}
+        )}
       </div>
 
-      <div className="text-center mt-8">
-        <button
-          onClick={toggleShow}
-          className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
+      {/* Modal */}
+      {modalData && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={handleCloseModal}
         >
-          {showAll ? "Показать меньше" : "Показать больше"}
-        </button>
-      </div>
-
-      {modalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-          onClick={closeModal}
-        >
-          {/* Prevent closing the modal when clicking on the modal content */}
           <div
-            className="relative bg-white rounded-lg overflow-hidden"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
-           
-            <img
-              src={currentImages[currentIndex]}
-              alt={`Slide ${currentIndex + 1}`}
-              className="w-full h-[80vh] object-contain"
-            />
-            <div className="absolute inset-y-0 left-0 flex items-center">
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              aria-label="Close"
+            >
+              ✖
+            </button>
+            <div className="relative">
+              <img
+                src={modalData.images[currentImageIndex]}
+                alt={`${modalData.title} Slide ${currentImageIndex + 1}`}
+                className="w-full h-64 object-cover rounded-md mb-4"
+              />
               <button
-                onClick={prevImage}
-                className="text-white bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-600"
+                onClick={handlePrevImage}
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                aria-label="Previous Image"
               >
-                &lt;
+                <FaChevronLeft />
+              </button>
+              <button
+                onClick={handleNextImage}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                aria-label="Next Image"
+              >
+                <FaChevronRight />
               </button>
             </div>
-            <div className="absolute inset-y-0 right-0 flex items-center">
-              <button
-                onClick={nextImage}
-                className="text-white bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-600"
-              >
-                &gt;
-              </button>
-            </div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              {modalData.title}
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300">
+              {modalData.description}
+            </p>
           </div>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </section>
   );
 };
 

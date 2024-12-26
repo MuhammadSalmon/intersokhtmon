@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { motion } from "framer-motion";
 import image1 from "../assets/about.jpg";
 import image2 from "../assets/blog-1.jpg";
 import image3 from "../assets/blog-2.jpg";
 import image4 from "../assets/blog-3.jpg";
+
 const projects = [
   {
-    title: "Green Energy Initiative",
-    description:
-      "A renewable energy project focusing on solar and wind power. This project aims to revolutionize the way energy is consumed, making it sustainable and eco-friendly.",
+    title: "ЖК «МЕХРГОН »",
+    description:"Строительство современного жилого комплекса осуществляется с использованием самых передовых технологий и инновационных решений. Особое внимание уделяется внедрению умных систем управления, обеспечивающих высокий уровень комфорта и безопасности для жителей. В процессе строительства используются экологически чистые материалы и энергоэффективные технологии, что позволяет значительно снизить воздействие на окружающую среду Общая площадь строительства: 55 891 м Этажность 16 и 18 Здание состоит из 6 блоков: 1 и 2 блок – по 16 этажей; 3, 4 и 5 блок по 18 этажей; 6 блок – парковка 6 этажей надземных и 2 этажей подземных . Душанбе, Таджикистан",
     progress: 70,
-    images: [
-      image1, image2, image3, image4
-    ],
+    images: [image1, image2, image3, image4],
     category: "Energy",
   },
   {
-    title: "Smart City Infrastructure",
-    description:
-      "Building IoT-enabled infrastructure for a smart city to ensure efficient resource management and a seamless urban experience for its residents.",
+    title: "Детское дошкольное учреждение",
+    description:"Строительство нового детского дошкольного учреждения выполнено с применением самых современных строительных технологий. В проекте использованы инновационные материалы и инженерные решения, которые обеспечивают высокую энергоэффективность и экологическую безопасность здания. Общая площадь строительства : 2500 м 2 Финансирование: АБР",
     progress: 40,
     images: [
       "https://via.placeholder.com/400x300?text=Smart+City+1",
@@ -26,11 +24,34 @@ const projects = [
     ],
     category: "Infrastructure",
   },
+  {
+    title: "Строительство административного здания прокуратуры города Рогун",
+    description:
+      "Проектирование и строительство административного здания прокуратуры в городе Рогун. Рогун, Таджикистан",
+    progress: 85,
+    images: [
+      "https://via.placeholder.com/400x300?text=Urban+Farming+1",
+      "https://via.placeholder.com/400x300?text=Urban+Farming+2",
+    ],
+    category: "Agriculture",
+  },
+  {
+    title: "AI Healthcare Solutions",
+    description:
+      "Developing AI-driven solutions to improve diagnostics and patient care in healthcare settings.",
+    progress: 60,
+    images: [
+      "https://via.placeholder.com/400x300?text=AI+Healthcare+1",
+      "https://via.placeholder.com/400x300?text=AI+Healthcare+2",
+    ],
+    category: "Healthcare",
+  },
 ];
 
 const ActiveProjects = () => {
   const [modalData, setModalData] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showAll, setShowAll] = useState(false);
 
   const handleOpenModal = (project) => {
     setModalData(project);
@@ -58,25 +79,44 @@ const ActiveProjects = () => {
     }
   };
 
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
+  const toggleShow = () => {
+    setShowAll(!showAll);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") handleCloseModal();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <section className="py-12 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Active Projects
-          </h2>
-        </div>
+        <h2 className="text-3xl font-bold text-gray-900 text-center dark:text-gray-100 mb-6">
+        НАШИ АКТИВНЫЕ ПРОЕКТЫ
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
+          {displayedProjects.map((project, index) => (
+            <motion.div
               key={index}
               className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <img
-                src={project.images[0]} // Display the first image as a thumbnail
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative">
+                <img
+                  src={project.images[0]} // Thumbnail
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+              </div>
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {project.title}
@@ -86,53 +126,65 @@ const ActiveProjects = () => {
                     ? `${project.description.slice(0, 150)}...`
                     : project.description}
                 </p>
-
-                <div className="mt-4 flex items-center justify-between">
-                  <span
-                    className={`text-sm font-medium ${
-                      project.progress < 50
-                        ? "text-red-500"
-                        : project.progress < 80
-                        ? "text-yellow-500"
-                        : "text-green-500"
-                    }`}
-                  >
-                    {project.progress}% Completed
+                <div className="mt-4">
+                  <div className="w-full bg-gray-300 rounded-full h-2">
+                    <div
+                      className={`h-2 rounded-full ${
+                        project.progress < 50
+                          ? "bg-red-500"
+                          : project.progress < 80
+                          ? "bg-yellow-500"
+                          : "bg-green-500"
+                      }`}
+                      style={{ width: `${project.progress}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-sm font-medium mt-2 inline-block">
+                    {project.progress}% Выполнено
                   </span>
                 </div>
-                <div className="mt-4 flex items-center justify-between">
-                  <button
-                    onClick={() => handleOpenModal(project)}
-                    className="text-blue-500 hover:underline text-sm font-medium"
-                  >
-                    Подробнее
-                  </button>
-                  <FaChevronRight className="text-gray-400 dark:text-gray-500" />
-                </div>
+                <button
+                  onClick={() => handleOpenModal(project)}
+                  className="text-blue-500 hover:underline text-sm font-medium mt-4 block"
+                >
+                  Подробнее
+                </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
+        {projects.length > 3 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={toggleShow}
+              className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
+            >
+              {showAll ? "Show Less" : "Show More"}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Modal */}
       {modalData && (
-        <div
+        <motion.div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           onClick={handleCloseModal}
         >
           <div
             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
-            onClick={(e) => e.stopPropagation()} // Prevent closing modal when clicking inside it
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleCloseModal}
               className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              aria-label="Close"
             >
               ✖
             </button>
-
-            {/* Image Slider */}
             <div className="relative">
               <img
                 src={modalData.images[currentImageIndex]}
@@ -142,17 +194,18 @@ const ActiveProjects = () => {
               <button
                 onClick={handlePrevImage}
                 className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                aria-label="Previous Image"
               >
                 <FaChevronLeft />
               </button>
               <button
                 onClick={handleNextImage}
                 className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                aria-label="Next Image"
               >
                 <FaChevronRight />
               </button>
             </div>
-
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
               {modalData.title}
             </h3>
@@ -160,7 +213,7 @@ const ActiveProjects = () => {
               {modalData.description}
             </p>
           </div>
-        </div>
+        </motion.div>
       )}
     </section>
   );

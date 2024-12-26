@@ -5,18 +5,18 @@ import image1 from "../assets/blog-3.jpg";
 const slides = [
   {
     image: image3, // Replace with your image URL
-    title: "Building the Future, Restoring the Past",
-    description: "ИНТЕРСОХТМОН – это инженерностроительная компания, предлагающая комплекс строительных услуг и технических консультаций по широкому спектру сфер применения",
-  },
+    title: "КЛИЕНТО ОРИЕНТИРОВАННАЯ ПОЛИТИКА",
+    description: "Выполнение строительно -монтажных работ общегражданских, промышленных и инфраструктурных объектов",
+    },
   {
     image: image2, // Replace with your image URL
-    title: "Reliable Construction Services",
-    description: "Experience excellence in every project we undertake.",
+    title: "ПЕРСОНАЛЬНЫЙ МЕНЕДЖМЕНТ",
+    description: "Выполнение строительно -монтажных работ инженерных сетей (водоснабжение , канализация, отопление, вентиляция, пожарная сигнализация и т . д.)",
   },
   {
     image: image1, // Replace with your image URL
-    title: "Design. Build. Deliver.",
-    description: "Transforming ideas into reality with precision and care.",
+    title: "ОПТИМАЛЬНОЕ ЦЕНООБРАЗОВАНИЕ",
+    description: "Выполнение строительно -монтажны х работ гидротехнических сооружений",
   },
 ];
 
@@ -68,7 +68,7 @@ const HeroSection = () => {
             href="#services"
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md font-medium transition duration-300"
           >
-           Наши Услуги
+           О нас
           </a>
           <a
             href="#projects"
