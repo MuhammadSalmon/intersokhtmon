@@ -5,6 +5,7 @@ import image1 from "../assets/about.jpg";
 import image2 from "../assets/blog-1.jpg";
 import image3 from "../assets/blog-2.jpg";
 import image4 from "../assets/blog-3.jpg";
+import img1 from '../assets/2349.jpg';
 
 const projects = [
   {
@@ -96,7 +97,12 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-100 dark:bg-gray-900">
+    <section className="py-12 bg-gray-800 dark:bg-gray-900" 
+    style={{
+          backgroundImage: `url(${img1})`,
+          height: "80vh;"
+        }}
+    >
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-gray-900 text-center dark:text-gray-100 mb-6">
         НАШИ УСЛУГИ
