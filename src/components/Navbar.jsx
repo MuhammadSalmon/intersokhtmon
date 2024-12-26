@@ -103,7 +103,7 @@ const Header = () => {
           <a
             href="/"
             className={`hover:text-blue-500 ${
-              isActive('home') ? 'bg-blue-100  text-gray-700 rounded-md px-3 py-1' : ''
+              isActive('home') ? '  text-gray-700 rounded-md px-3 py-1' : ''
             }`}
           >
             ГЛАВНОЕ
@@ -111,7 +111,7 @@ const Header = () => {
           <a
             href="#about"
             className={`hover:text-blue-500 ${
-              isActive('about') ? 'bg-blue-100 text-gray-700  rounded-md px-3 py-1' : ''
+              isActive('about') ? ' text-gray-700  rounded-md px-3 py-1' : ''
             }`}
           >
             О НАС
@@ -142,7 +142,7 @@ const Header = () => {
               <a
                 href="/"
                 className={`hover:text-blue-500 ${
-                  isActive('home') ? 'bg-blue-100  text-gray-700 px-3 py-1 rounded-md' : ''
+                  isActive('home') ? '  text-gray-700 px-3 py-1 rounded-md' : ''
                 }`}
                 onClick={toggleMobileMenu}
               >
@@ -153,7 +153,7 @@ const Header = () => {
               <a
                 href="#about"
                 className={`hover:text-blue-500 ${
-                  isActive('about') ? 'bg-blue-100 text-gray-700  px-3 py-1 rounded-md' : ''
+                  isActive('about') ? ' text-gray-700  px-3 py-1 rounded-md' : ''
                 }`}
                 onClick={toggleMobileMenu}
               >

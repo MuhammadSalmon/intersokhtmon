@@ -60,7 +60,6 @@ const CompletedProjects = () => {
 
   return (
     <>
-    <h1 className="bg-gray-100 flex items-center justify-center pb-8  text-2xl">НАШИ ЗАВЕРШЁННЫЕ ПРОЕКТЫ</h1>
     <div className="relative w-full h-[80vh] overflow-hidden">
     
       {/* Background Slides */}
