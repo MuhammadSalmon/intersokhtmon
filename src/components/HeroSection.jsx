@@ -85,7 +85,7 @@ const settings = {
             initial="hidden"
             animate={showText ? "visible" : "hidden"}
             variants={textVariants}
-            className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold mb-4 md:mb-6 leading-snug"
+            className="text-orange-400 text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold mb-4 md:mb-6 leading-snug"
           >
             {item.title}
           </motion.h1>
@@ -93,7 +93,7 @@ const settings = {
             initial="hidden"
             animate={showText ? "visible" : "hidden"}
             variants={textVariants}
-            className="text-white text-lg sm:text-xl md:text-xl lg:text-xl font-bold mb-4 md:mb-6 leading-snug"
+            className="text-orange-400 text-lg sm:text-xl md:text-xl lg:text-xl font-bold mb-4 md:mb-6 leading-snug"
           >
             {item.description}
           </motion.h3>
@@ -106,7 +106,7 @@ const settings = {
           >
             <a
               href="#about"
-              className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-white hover:m-4 hover:text-orange-500 transition"
+              className="px-6 py-3 text-sm font-medium text-orange-400 bg-blue-600 rounded-md hover:bg-white hover:m-4 hover:text-blue-500 transition"
             >
               Подробнее
             </a>

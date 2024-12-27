@@ -74,7 +74,7 @@ const Statistics = () => {
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="container relative z-10 mx-auto text-center">
-        <h2 className="text-3xl font-bold text-white mb-4 relative inline-block">
+        <h2 className="text-3xl font-bold text-orange-500 mb-4 relative inline-block">
           <span className="absolute -left-20 right-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
           <span className="absolute -left-20 right-full mt-1 border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
           Статистика
@@ -99,9 +99,9 @@ const Statistics = () => {
 
               {/* Right Content Section */}
               <div className="ml-6">
-                <p className="text-lg font-semibold text-gray-200">{stat.title}</p>
+                <p className="text-lg font-semibold text-orange-200">{stat.title}</p>
                 <p
-                  className="text-3xl font-extrabold text-white"
+                  className="text-3xl font-extrabold text-orange-500"
                   ref={(el) => (numberRefs.current[index] = el)}
                   data-stop={stat.value}
                 >
