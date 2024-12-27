@@ -47,7 +47,7 @@ const Header = () => {
         isSticky ? 'fixed top-0 left-0 right-0 z-50' : ''
       }  bg-gradient-to-r from-white to-blue-800 shadow-md`}
     >
-      {!isRootPage && !isSticky && (
+      {isRootPage && !isSticky && (
         <div className="bg-transparent border-b hidden md:block">
           <div className="container mx-auto flex items-center justify-around py-1">
             <a href="/" className="flex">
