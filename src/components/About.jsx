@@ -11,7 +11,7 @@ const AboutUs = () => {
   };
 
   return (
-    <section  className="bg-gray-100 py-16 px-6 md:py-16 md:px-12 lg:px-24" 
+    <section  className="bg-gray-100 bg-cover py-16 px-6 md:py-16 md:px-12 lg:px-24" 
     style={{
       backgroundImage: `url(${img1})`,
       height: "80vh;"

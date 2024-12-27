@@ -5,59 +5,89 @@ import image1 from "../assets/about.jpg";
 import image2 from "../assets/blog-1.jpg";
 import image3 from "../assets/blog-2.jpg";
 import image4 from "../assets/blog-3.jpg";
-import img1 from '../assets/back_activ.jpg';
-
+import img1 from "../assets/back_activ.jpg";
 
 const projects = [
   {
+      title: "Национальный центр управления кризисными ситуациями в КЧС и ГО",
+      description:
+        "Построен современный центр управления для эффективного реагирования на кризисные ситуации.",
+      images: [image1],
+      progress: 100,
+      category: "completed",
+    },
+    {
+      title: "Строительство здания ТВ Сафина",
+      description:
+        "Масштабное строительство и модернизация инфраструктуры для национального телевидения.",
+      images: [image2],
+      progress: 100,
+      category: "completed",
+    },
+    {
+      title: "Рогунская ГЭС",
+      description:
+        "Ключевой проект гидроэнергетики, обеспечивающий энергоснабжение страны.",
+      images: [image3],
+      category: "completed",
+      progress: 100,
+    },
+    {
+      title: "Сангтудинская ГЭС-1",
+      description:
+        "Энергетический проект, важный для стабилизации энергосистемы региона.",
+      images: [image4],
+      category: "completed",
+      progress: 100,
+    },
+    {
+      title:
+        "Строительство здания общежития со столовой для компании \u201cСГЭМ\u201d в городе Нурек",
+      description:
+        "Создание комфортных условий проживания и питания для сотрудников компании.",
+      images: ["https://via.placeholder.com/400x300?text=Project+5"],
+      category: "completed",
+      progress: 100,
+    },
+    {
+      title: "Кайраккумская ГЭС",
+      description:
+        "Реконструкция гидроэлектростанции для увеличения мощности и устойчивости энергосистемы.",
+      images: ["https://via.placeholder.com/400x300?text=Project+6"],
+      category: "completed",
+      progress: 100,
+    },
+  {
     title: "ЖК «МЕХРГОН »",
-    description:"Строительство современного жилого комплекса осуществляется с использованием самых передовых технологий и инновационных решений. Особое внимание уделяется внедрению умных систем управления, обеспечивающих высокий уровень комфорта и безопасности для жителей. В процессе строительства используются экологически чистые материалы и энергоэффективные технологии, что позволяет значительно снизить воздействие на окружающую среду Общая площадь строительства: 55 891 м Этажность 16 и 18 Здание состоит из 6 блоков: 1 и 2 блок – по 16 этажей; 3, 4 и 5 блок по 18 этажей; 6 блок – парковка 6 этажей надземных и 2 этажей подземных . Душанбе, Таджикистан",
+    description: "Строительство современного жилого комплекса...",
     progress: 70,
     images: [image1, image2, image3, image4],
-    category: "Energy",
+    category: "active", // Category for active projects
   },
   {
     title: "Детское дошкольное учреждение",
-    description:"Строительство нового детского дошкольного учреждения выполнено с применением самых современных строительных технологий. В проекте использованы инновационные материалы и инженерные решения, которые обеспечивают высокую энергоэффективность и экологическую безопасность здания. Общая площадь строительства : 2500 м 2 Финансирование: АБР",
-    progress: 40,
-    images: [
-      "https://via.placeholder.com/400x300?text=Smart+City+1",
-      "https://via.placeholder.com/400x300?text=Smart+City+2",
-    ],
-    category: "Infrastructure",
+    description: "Строительство нового детского дошкольного учреждения...",
+    progress: 60,
+    images: ["https://via.placeholder.com/400x300?text=Smart+City+1"],
+    category: "active", // Category for completed projects
   },
   {
     title: "Строительство административного здания прокуратуры города Рогун",
-    description:
-      "Проектирование и строительство административного здания прокуратуры в городе Рогун. Рогун, Таджикистан",
-    progress: 85,
-    images: [
-      "https://via.placeholder.com/400x300?text=Urban+Farming+1",
-      "https://via.placeholder.com/400x300?text=Urban+Farming+2",
-    ],
-    category: "Agriculture",
-  },
-  {
-    title: "AI Healthcare Solutions",
-    description:
-      "Developing AI-driven solutions to improve diagnostics and patient care in healthcare settings.",
-    progress: 60,
-    images: [
-      "https://via.placeholder.com/400x300?text=AI+Healthcare+1",
-      "https://via.placeholder.com/400x300?text=AI+Healthcare+2",
-    ],
-    category: "Healthcare",
+    description: "Проектирование и строительство административного здания...",
+    progress: 40,
+    images: ["https://via.placeholder.com/400x300?text=Urban+Farming+1"],
+    category: "active",
   },
 ];
 
 const ActiveProjects = () => {
   const [modalData, setModalData] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [showAll, setShowAll] = useState(false);
+  const [filter, setFilter] = useState("all"); // Filter state
 
   const handleOpenModal = (project) => {
     setModalData(project);
-    setCurrentImageIndex(0); // Reset to the first image
+    setCurrentImageIndex(0);
   };
 
   const handleCloseModal = () => {
@@ -81,33 +111,55 @@ const ActiveProjects = () => {
     }
   };
 
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
-
-  const toggleShow = () => {
-    setShowAll(!showAll);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") handleCloseModal();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  // Filter projects based on selected filter
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter((project) => project.category === filter);
 
   return (
-    <section className="py-12 bg-gray-100 dark:bg-gray-900"
-    style={{
-              backgroundImage: `url(${img1})`,
-              height: "80vh;"
-            }}
+    <section
+      className="py-12 bg-gray-100 h-auto dark:bg-gray-900"
+      style={{
+        backgroundImage: `url(${img1})`,
+      }}
     >
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-slate-100 text-center dark:text-slate-100 mb-6">
-        НАШИ АКТИВНЫЕ ПРОЕКТЫ
+          НАШИ ПРОЕКТЫ
         </h2>
+
+        {/* Filter Buttons */}
+        <div className="flex justify-center space-x-4 mb-6">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-4 py-2 rounded-lg ${
+              filter === "all" ? "bg-blue-600 text-white" : "bg-gray-300"
+            }`}
+          >
+            Все Проекты
+          </button>
+          <button
+            onClick={() => setFilter("active")}
+            className={`px-4 py-2 rounded-lg ${
+              filter === "active" ? "bg-blue-600 text-white" : "bg-gray-300"
+            }`}
+          >
+            АКТИВНЫЕ ПРОЕКТЫ
+          </button>
+          <button
+            onClick={() => setFilter("completed")}
+            className={`px-4 py-2 rounded-lg ${
+              filter === "completed" ? "bg-blue-600 text-white" : "bg-gray-300"
+            }`}
+          >
+            ЗАВЕРШЕННЫЕ ПРОЕКТЫ
+          </button>
+        </div>
+
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
               className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
@@ -118,7 +170,7 @@ const ActiveProjects = () => {
             >
               <div className="relative">
                 <img
-                  src={project.images[0]} // Thumbnail
+                  src={project.images[0]}
                   alt={project.title}
                   className="w-full h-48 object-cover"
                 />
@@ -161,67 +213,56 @@ const ActiveProjects = () => {
           ))}
         </div>
 
-        {projects.length > 3 && (
-          <div className="text-center mt-8">
-            <button
-              onClick={toggleShow}
-              className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition"
+        {/* Modal */}
+        {modalData && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={handleCloseModal}
+          >
+            <div
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
+              onClick={(e) => e.stopPropagation()}
             >
-              {showAll ? "Show Less" : "Show More"}
-            </button>
-          </div>
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                aria-label="Close"
+              >
+                ✖
+              </button>
+              <div className="relative">
+                <img
+                  src={modalData.images[currentImageIndex]}
+                  alt={`${modalData.title} Slide ${currentImageIndex + 1}`}
+                  className="w-full h-64 object-cover rounded-md mb-4"
+                />
+                <button
+                  onClick={handlePrevImage}
+                  className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                  aria-label="Previous Image"
+                >
+                  <FaChevronLeft />
+                </button>
+                <button
+                  onClick={handleNextImage}
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+                  aria-label="Next Image"
+                >
+                  <FaChevronRight />
+                </button>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                {modalData.title}
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                {modalData.description}
+              </p>
+            </div>
+          </motion.div>
         )}
       </div>
-
-      {/* Modal */}
-      {modalData && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={handleCloseModal}
-        >
-          <div
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-              aria-label="Close"
-            >
-              ✖
-            </button>
-            <div className="relative">
-              <img
-                src={modalData.images[currentImageIndex]}
-                alt={`${modalData.title} Slide ${currentImageIndex + 1}`}
-                className="w-full h-64 object-cover rounded-md mb-4"
-              />
-              <button
-                onClick={handlePrevImage}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-                aria-label="Previous Image"
-              >
-                <FaChevronLeft />
-              </button>
-              <button
-                onClick={handleNextImage}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-                aria-label="Next Image"
-              >
-                <FaChevronRight />
-              </button>
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              {modalData.title}
-            </h3>
-            <p className="text-gray-700 dark:text-gray-300">
-              {modalData.description}
-            </p>
-          </div>
-        </motion.div>
-      )}
     </section>
   );
 };

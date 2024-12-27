@@ -97,7 +97,7 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-800 dark:bg-gray-900" 
+    <section className="py-12 bg-gray-800 bg-cover dark:bg-gray-900" 
     style={{
           backgroundImage: `url(${img1})`,
           height: "80vh;"

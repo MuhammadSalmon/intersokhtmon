@@ -4,13 +4,14 @@ import ServicesPage from "./components/Services";
 import CompletedProjects from "./components/CompleteProjects";
 import Footer from "./components/Footer";
 import ActiveProjects from "./components/ActiveProjects ";
+import Statistics from "./components/Statistics";
 
 export default function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
 
       {/* Hero Section */}
-      <section id="home" style={{"height": "80vh;"}} className="h-screen bg-gray-100 flex items-center justify-center">
+      <section id="home" className="h-screen bg-gray-100 flex items-center justify-center">
         <HeroSection />
       </section>
 
@@ -18,25 +19,23 @@ export default function App() {
       <section id="about" className="">
         <AboutUs />
       </section>
-
+      <section id="statistics" className="">
+        <Statistics />
+      </section>
       {/* Services Section */}
       <section id="services" style={{"height": "80vh;"}} className="">
         <ServicesPage />
       </section>
 
       {/* Completed Projects Section */}
-      <section id="projects"  style={{"height": "80vh;"}} className="">
-        <CompletedProjects />
-      </section>
-      <section id="active" style={{"height": "80vh;"}} className="">
+      
+      <section id="active"  className="">
         <ActiveProjects />
       </section>
       
 
       {/* Footer Section */}
-      <footer id="contact" className="bg-gray-800 text-gray-200">
-        <Footer />
-      </footer>
-    </>
+        <Footer className="w-full bg-gray-800 text-white" />
+    </div>
   );
 }
