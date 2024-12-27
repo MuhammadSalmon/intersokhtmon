@@ -14,12 +14,12 @@ const Statistics = () => {
     {
       icon: clients,
       title: "Выполненные проекты",
-      value: 10,
+      value: 100,
     },
     {
       icon: product,
       title: "Активные проекти",
-      value: 5,
+      value: 100,
     },
     {
       icon: worker,
@@ -65,7 +65,7 @@ const Statistics = () => {
 
   return (
     <section
-      className="relative bg-cover bg-center py-12"
+      className="relative bg-cover bg-center py-12 bg-gradient-to-r from-white to-blue-800"
       style={{
         backgroundImage: `url(${img})`,
       }}
@@ -75,37 +75,43 @@ const Statistics = () => {
 
       <div className="container relative z-10 mx-auto text-center">
         <h2 className="text-3xl font-bold text-white mb-4 relative inline-block">
-          <span className="absolute -left-20 right-full border-b-2 border-white top-1/2 transform -translate-y-1/2 w-20"></span>
-          Statistics
-          <span className="absolute right-0 left-full border-b-2 border-white top-1/2 transform -translate-y-1/2 w-20"></span>
+          <span className="absolute -left-20 right-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
+          <span className="absolute -left-20 right-full mt-1 border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
+          Статистика
+          <span className="absolute right-0 left-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
+          <span className="absolute right-0 mt-1 left-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-8">
           {statisticsData.map((stat, index) => (
             <div
               key={index}
-              className="w-64 p-6 bg-slate-600 bg-opacity-70 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105"
+              className="w-72 p-6 bg-gradient-to-br from-white  to-blue-700 bg-opacity-80 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center"
             >
-              <img
-                src={stat.icon}
-                alt={stat.title}
-                className="mx-auto mb-4 w-16 h-16"
-              />
-              <div className="text-center">
-                <p className="text-xl font-medium text-gray-100 mb-2">
-                  {stat.title}
-                </p>
+              {/* Left Image Section */}
+              <div className="flex-shrink-0">
+                <img
+                  src={stat.icon}
+                  alt={stat.title}
+                  className="w-16 h-16 rounded-full bg-orange-500 p-2 shadow-md"
+                />
+              </div>
+
+              {/* Right Content Section */}
+              <div className="ml-6">
+                <p className="text-lg font-semibold text-gray-200">{stat.title}</p>
                 <p
-                  className="text-3xl font-bold text-white"
+                  className="text-3xl font-extrabold text-white"
                   ref={(el) => (numberRefs.current[index] = el)}
                   data-stop={stat.value}
                 >
                   0
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );

@@ -1,10 +1,10 @@
 import React from "react";
-import logo from "../assets/logo.jpg";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-gray-200 py-6 px-4">
-      <div className="max-w-7xl mx-auto flex justify-between jus md:grid-cols-3 gap-8 items-center">
+      <div className="max-w-7xl mx-auto flex justify-between md:grid-cols-3 gap-8 items-center">
         {/* Logo Section */}
         <div className="flex justify-center md:justify-start">
           <img
@@ -29,7 +29,10 @@ const Footer = () => {
             </li>
             <li>
               <strong>E-mail:</strong>{" "}
-              <a href="mailto:intersokhtmon@mail.ru" className="hover:underline">
+              <a
+                href="mailto:intersokhtmon@mail.ru"
+                className="hover:underline"
+              >
                 intersokhtmon@mail.ru
               </a>
             </li>
@@ -38,6 +41,34 @@ const Footer = () => {
               Фирдавси, ул. Гулбутта
             </li>
           </ul>
+
+          {/* Social Icons */}
+          <div className="mt-4 flex justify-center space-x-4">
+            <a
+              href="https://www.facebook.com/imod.tj/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.twitter.com/imod.tj/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/imod.tj/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
       </div>
 

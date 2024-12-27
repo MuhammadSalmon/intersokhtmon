@@ -1,11 +1,11 @@
 import AboutUs from "./components/About";
 import HeroSection from "./components/HeroSection";
-import ServicesPage from "./components/Services";
-import CompletedProjects from "./components/CompleteProjects";
+import ServicesPage from "./components/Services_1";
 import Footer from "./components/Footer";
 import ActiveProjects from "./components/ActiveProjects ";
 import Statistics from "./components/Statistics";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -23,16 +23,15 @@ export default function App() {
         <Statistics />
       </section>
       {/* Services Section */}
-      <section id="services" style={{"height": "80vh;"}} className="">
+      {/* <section id="services" style={{"height": "80vh;"}} className="">
         <ServicesPage />
-      </section>
+      </section> */}
 
       {/* Completed Projects Section */}
       
       <section id="active"  className="">
         <ActiveProjects />
       </section>
-      
 
       {/* Footer Section */}
         <Footer className="w-full bg-gray-800 text-white" />

@@ -50,9 +50,9 @@ const Header = () => {
     <header
       className={`${
         isSticky ? 'fixed top-0 left-0 right-0 z-50' : ''
-      }  backdrop-blur-md bg-transparent shadow-md`}
+      }  bg-gradient-to-r from-white to-blue-800 shadow-md`}
     >
-      {isRootPage && !isSticky && (
+      {!isRootPage && !isSticky && (
         <div className="bg-transparent border-b hidden md:block">
           <div className="container mx-auto flex items-center justify-around py-1">
             <a href="/" className="flex">
@@ -103,7 +103,7 @@ const Header = () => {
           <a
             href="/"
             className={`hover:text-blue-500 ${
-              isActive('home') ? '  text-gray-700 rounded-md px-3 py-1' : ''
+              isActive('home') ? '  text-black rounded-md px-3 py-1' : ''
             }`}
           >
             ГЛАВНОЕ
@@ -132,9 +132,17 @@ const Header = () => {
           >
             ПРОЕКТЫ
           </a>
+          <a
+            href="#flats"
+            className={`hover:text-blue-500 ${
+              isActive('projects') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
+            }`}
+          >
+            НЕДВИЖИМОСТЬ
+          </a>
         </nav>
       </div>
-
+      
       {isMobileMenuOpen && (
         <nav className="bg-gray-100 dark md:hidden">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">

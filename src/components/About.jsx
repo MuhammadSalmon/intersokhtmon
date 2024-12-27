@@ -22,11 +22,11 @@ const AboutUs = () => {
         <div className="col-span-2 md:col-span-1 py-10 space-y-6">
       <h2 className="text-3xl md:text-4xl font-bold text-white relative pb-4">
         О нас
-        <div className="absolute bottom-0 left-0 w-64 border-b-4 border-white"></div>
+        <div className="absolute bottom-0 left-0 w-64 border-b-4 border-orange-500"></div>
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 mt-2">
-          <div className="w-3 h-1 bg-white"></div>
-          <div className="w-3 h-1 bg-white"></div>
-          <div className="w-3 h-1 bg-white"></div>
+          <div className="w-3 h-1 bg-orange-500"></div>
+          <div className="w-3 h-1 bg-orange-500"></div>
+          <div className="w-3 h-1 bg-orange-500"></div>
         </div>
       </h2>
       <p className="text-white text-lg leading-relaxed">
@@ -69,7 +69,7 @@ const AboutUs = () => {
 
       <button
         onClick={toggleExpand}
-        className="bg-white text-blue-600 hover:bg-blue-600 hover:text-white hover:m-4 font-semibold px-6 py-2 rounded-md transition duration-300"
+        className="bg-blue-600 text-white hover:bg-white hover:text-orange-500 hover:m-4  font-semibold px-6 py-2 rounded-md transition duration-300"
       >
         {isExpanded ? "Меньше" : "Больше"}
       </button>

@@ -84,7 +84,7 @@ const ActiveProjects = () => {
   const [modalData, setModalData] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [filter, setFilter] = useState("all"); // Filter state
-
+  
   const handleOpenModal = (project) => {
     setModalData(project);
     setCurrentImageIndex(0);
@@ -119,10 +119,8 @@ const ActiveProjects = () => {
 
   return (
     <section
-      className="py-12 bg-gray-100 h-auto dark:bg-gray-900"
-      style={{
-        backgroundImage: `url(${img1})`,
-      }}
+      className="py-12 h-auto  bg-gradient-to-r from-white to-blue-800"
+      
     >
       <div className="container mx-auto px-6">
         <h2 className="text-3xl font-bold text-slate-100 text-center dark:text-slate-100 mb-6">
@@ -134,7 +132,7 @@ const ActiveProjects = () => {
           <button
             onClick={() => setFilter("all")}
             className={`px-4 py-2 rounded-lg ${
-              filter === "all" ? "bg-blue-600 text-white" : "bg-gray-300"
+              filter === "all" ? "bg-blue-600 text-white" : "bg-white text-orange-500"
             }`}
           >
             Все Проекты
@@ -142,7 +140,7 @@ const ActiveProjects = () => {
           <button
             onClick={() => setFilter("active")}
             className={`px-4 py-2 rounded-lg ${
-              filter === "active" ? "bg-blue-600 text-white" : "bg-gray-300"
+              filter === "active" ? "bg-blue-600 text-white" : "bg-white text-orange-500"
             }`}
           >
             АКТИВНЫЕ ПРОЕКТЫ
@@ -150,7 +148,7 @@ const ActiveProjects = () => {
           <button
             onClick={() => setFilter("completed")}
             className={`px-4 py-2 rounded-lg ${
-              filter === "completed" ? "bg-blue-600 text-white" : "bg-gray-300"
+              filter === "completed" ? "bg-blue-600 text-white" : "bg-white text-orange-500"
             }`}
           >
             ЗАВЕРШЕННЫЕ ПРОЕКТЫ

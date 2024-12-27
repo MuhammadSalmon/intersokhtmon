@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import image3 from "../assets/2349.jpg";
 import image2 from "../assets/2891.jpg";
 import image1 from "../assets/background.jpg";
@@ -24,72 +29,94 @@ const slides = [
       "Выполнение строительно -монтажны х работ гидротехнических сооружений",
   },
 ];
-
 const HeroSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const textVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+const buttonVariants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+};
+
+useEffect(() => {
+  setTimeout(() => setShowText(true), 500);
+}, []);
+
+const settings = {
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 10000,
+  pauseOnHover: true,
+  cssEase: "ease-in-out",
+  speed: 4000,
+  arrows: false,
+};
+
+
+  const [showText, setShowText] = useState(false);
+  
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full  h-screen overflow-hidden">
       {/* Header */}
       <div className="absolute top-0 left-0 w-full z-30">
         <Header />
       </div>
 
       {/* Slideshow */}
-      <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          >
-            <img
-              className="w-full h-full object-cover"
-              src={slide.image}
-              alt={slide.title}
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          </div>
-        ))}
+      <Slider {...settings}>
+  {slides.map((item, index) => (
+    <div className="h-[120vh]" key={index}>
+      <div
+        className="relative flex items-center justify-center md:justify-start h-full w-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${item.image})`,
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
 
-        {/* Content */}
-        <div className="relative z-20 flex flex-col items-start justify-center h-full  text-white px-4">
-          <h1
-            key={slides[currentSlide].title}
-            className="text-4xl md:text-3xl font-extrabold leading-tight mb-4 animate-fadeIn"
+        <div className="relative z-10 text-center md:text-left px-4 md:px-10 max-w-2xl">
+          <motion.h1
+            initial="hidden"
+            animate={showText ? "visible" : "hidden"}
+            variants={textVariants}
+            className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold mb-4 md:mb-6 leading-snug"
           >
-            {slides[currentSlide].title}
-          </h1>
-          <p
-            key={slides[currentSlide].description}
-            className="text-lg md:text-xl max-w-2xl mb-6 animate-fadeIn"
+            {item.title}
+          </motion.h1>
+          <motion.h3
+            initial="hidden"
+            animate={showText ? "visible" : "hidden"}
+            variants={textVariants}
+            className="text-white text-lg sm:text-xl md:text-xl lg:text-xl font-bold mb-4 md:mb-6 leading-snug"
           >
-            {slides[currentSlide].description}
-          </p>
-          <div className="flex space-x-4 animate-fadeIn">
+            {item.description}
+          </motion.h3>
+
+          <motion.div
+            initial="hidden"
+            animate={showText ? "visible" : "hidden"}
+            variants={buttonVariants}
+            className="flex justify-center md:justify-start"
+          >
             <a
-              href="#services"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md font-medium transition duration-300"
+              href="#about"
+              className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-white hover:m-4 hover:text-orange-500 transition"
             >
-              О нас
+              Подробнее
             </a>
-            <a
-              href="#projects"
-              className="bg-transparent border border-white hover:bg-white hover:text-gray-900 text-white px-6 py-3 rounded-lg shadow-md font-medium transition duration-300"
-            >
-              Активные Проекты
-            </a>
-          </div>
+          </motion.div>
         </div>
       </div>
+    </div>
+  ))}
+</Slider>
+
     </div>
   );
 };
