@@ -14,11 +14,6 @@ const Header = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-  const closeDropdown = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setIsDropdownOpen(false);
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
