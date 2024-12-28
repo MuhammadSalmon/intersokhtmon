@@ -8,7 +8,7 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const sections = ['about', 'services', 'projects', 'home'];
+  const sections = ['about', 'services', 'projects', 'home', "nedzh"];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -128,7 +128,7 @@ const Header = () => {
             ПРОЕКТЫ
           </a>
           <a
-            href="#flats"
+            href="#nedzh"
             className={`hover:text-blue-500 ${
               isActive('projects') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
             }`}
