@@ -7,40 +7,42 @@ import Statistics from "./components/Statistics";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Nedvizhimost from "./components/nedzh";
+
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
-
       {/* Hero Section */}
       <section id="home" className="h-screen bg-gray-100 flex items-center justify-center">
         <HeroSection />
       </section>
 
       {/* About Us Section */}
-      <section id="about" className="">
+      <section id="about">
         <AboutUs />
       </section>
       
-      <section id="statistics" className="">
+      {/* Statistics Section */}
+      <section id="statistics">
         <Statistics />
       </section>
+
       {/* Services Section */}
-      <section id="services" style={{"height": "80vh;"}} className="">
+      <section id="services">
         <Services />
       </section>
 
       {/* Completed Projects Section */}
-      
-      <section id="active"  className="">
+      <section id="projects">
         <ActiveProjects />
       </section>
-      
 
-      <section id="nedzh" style={{"height": "80vh;"}} className="">
+      {/* Nedvizhimost Section */}
+      <section id="nedzh" >
         <Nedvizhimost />
       </section>
+
       {/* Footer Section */}
-        <Footer className="w-full bg-gray-800 text-white" />
+      <Footer className="w-full bg-gray-800 text-white" />
     </div>
   );
 }

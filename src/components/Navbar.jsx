@@ -1,38 +1,38 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const sections = ['about', 'services', 'projects', 'home', "nedzh", "active"];
+
+  const sections = ['home', 'about', 'services', 'projects', 'nedzh'];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
+
+      let currentSection = '';
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const { top, bottom } = element.getBoundingClientRect();
+          if (top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2) {
+            currentSection = section;
+          }
+        }
+      });
+      setActiveSection(currentSection);
     };
 
-    let currentSection = '';
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) {
-        const { top, bottom } = element.getBoundingClientRect();
-        if (top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2) {
-          currentSection = section;
-        }
-      }
-    });
-    setActiveSection(currentSection);
-
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check in case the page is already scrolled
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
@@ -45,7 +45,7 @@ const Header = () => {
     <header
       className={`${
         isSticky ? 'fixed top-0 left-0 right-0 z-50' : ''
-      }  bg-gradient-to-r from-white to-blue-800 shadow-md`}
+      } bg-gradient-to-r from-white to-blue-800 shadow-md`}
     >
       {isRootPage && !isSticky && (
         <div className="bg-transparent border-b hidden md:block">
@@ -65,7 +65,9 @@ const Header = () => {
                 <span className="text-slate-100 font-medium">08:00 - 18:00</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold text-slate-100">Адрес: Республика Таджикистан, г. Душанбе, </span>
+                <span className="font-semibold text-slate-100">
+                  Адрес: Республика Таджикистан, г. Душанбе,
+                </span>
                 <a className="text-slate-100 hover:underline">р. Фирдавси, ул. Гулбутта</a>
               </div>
             </div>
@@ -74,7 +76,7 @@ const Header = () => {
       )}
 
       <div
-        className={`container dark mx-auto px-4 py-4 flex items-center ${
+        className={`container mx-auto px-4 py-4 flex items-center ${
           isSticky || !isRootPage ? 'justify-around' : 'justify-center'
         } ${isSticky ? 'pt-5' : ''}`}
       >
@@ -88,7 +90,6 @@ const Header = () => {
           <a href="/" className="flex items-center">
             <img className="h-8" src={logo} alt="ТГЕМ лого" />
           </a>
-
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
           </button>
@@ -97,56 +98,44 @@ const Header = () => {
         <nav className={`hidden md:flex items-center text-slate-100 space-x-8 text-lg`}>
           <a
             href="/"
-            className={`hover:text-blue-500 ${
-              isActive('home') ? '  text-black rounded-md px-3 py-1' : ''
-            }`}
+            className={`hover:text-blue-500 ${isActive('home') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
           >
             ГЛАВНОЕ
           </a>
           <a
             href="#about"
-            className={`hover:text-blue-500 ${
-              isActive('about') ? ' text-gray-700  rounded-md px-3 py-1' : ''
-            }`}
+            className={`hover:text-blue-500 ${isActive('about') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
           >
             О НАС
           </a>
           <a
             href="#services"
-            className={`hover:text-blue-500 ${
-              isActive('services') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
-            }`}
+            className={`hover:text-blue-500 ${isActive('services') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
           >
             УСЛУГИ
           </a>
           <a
-            href="#active"
-            className={`hover:text-blue-500 ${
-              isActive('projects') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
-            }`}
+            href="#projects"
+            className={`hover:text-blue-500 ${isActive('projects') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
           >
             ПРОЕКТЫ
           </a>
           <a
             href="#nedzh"
-            className={`hover:text-blue-500 ${
-              isActive('projects') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
-            }`}
+            className={`hover:text-blue-500 ${isActive('nedzh') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
           >
             НЕДВИЖИМОСТЬ
           </a>
         </nav>
       </div>
-      
+
       {isMobileMenuOpen && (
         <nav className="bg-gray-100 dark md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <a
                 href="/"
-                className={`hover:text-blue-500 ${
-                  isActive('home') ? '  text-gray-700 px-3 py-1 rounded-md' : ''
-                }`}
+                className={`hover:text-blue-500 ${isActive('home') ? 'text-gray-700 px-3 py-1 rounded-md' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ГЛАВНОЕ
@@ -155,9 +144,7 @@ const Header = () => {
             <li>
               <a
                 href="#about"
-                className={`hover:text-blue-500 ${
-                  isActive('about') ? ' text-gray-700  px-3 py-1 rounded-md' : ''
-                }`}
+                className={`hover:text-blue-500 ${isActive('about') ? 'text-gray-700 px-3 py-1 rounded-md' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 О НАС
@@ -166,9 +153,7 @@ const Header = () => {
             <li>
               <a
                 href="#services"
-                className={`hover:text-blue-500 ${
-                  isActive('services') ? 'bg-blue- text-gray-700 100 px-3 py-1 rounded-md' : ''
-                }`}
+                className={`hover:text-blue-500 ${isActive('services') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 УСЛУГИ
@@ -176,10 +161,8 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#projects"
-                className={`hover:text-blue-500 ${
-                  isActive('projects') ? 'bg-blue- text-gray-700 100 px-3 py-1 rounded-md' : ''
-                }`}
+                href="#active"
+                className={`hover:text-blue-500 ${isActive('projects') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ПРОЕКТЫ
@@ -188,9 +171,7 @@ const Header = () => {
             <li>
               <a
                 href="#nedzh"
-                className={`hover:text-blue-500 ${
-                  isActive('nedzh') ? 'bg-blue- text-gray-700 100 px-3 py-1 rounded-md' : ''
-                }`}
+                className={`hover:text-blue-500 ${isActive('nedzh') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 НЕДВИЖИМОСТЬ

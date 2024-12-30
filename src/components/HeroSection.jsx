@@ -105,7 +105,7 @@ const settings = {
             className="flex justify-center md:justify-start"
           >
             <a
-              href="#active"
+              href="#projects"
               className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-white hover:m-4 hover:text-blue-500 transition"
             >
               Подробнее

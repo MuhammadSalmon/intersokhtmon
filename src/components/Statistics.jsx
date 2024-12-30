@@ -14,12 +14,12 @@ const Statistics = () => {
     {
       icon: clients,
       title: "Выполненные проекты",
-      value: 100,
+      value: 24,
     },
     {
       icon: product,
       title: "Активные проекти",
-      value: 100,
+      value: 3,
     },
     {
       icon: worker,
@@ -39,7 +39,7 @@ const Statistics = () => {
           el.innerText = Math.ceil(currentValue);
           requestAnimationFrame(updateNumber);
         } else {
-          el.innerText = `${endValue}+`; // Display the target value with "+" at the end
+          el.innerText = `${endValue}`; // Display the target value with "+" at the end
         }
       };
       updateNumber();
