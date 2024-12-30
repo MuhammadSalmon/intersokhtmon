@@ -13,15 +13,17 @@ const projects = [
       description:
         "Построен современный центр управления для эффективного реагирования на кризисные ситуации.",
       images: [image1],
+      size: "",
       progress: 100,
       category: "completed",
     },
     {
-      title: "Строительство здания ТВ Сафина",
+      title: "Комплекс современных зданий для размещения государственного  учреждения «ТВ Сафина»",
       description:
-        "Масштабное строительство и модернизация инфраструктуры для национального телевидения.",
+        "Строительство комплекса зданий ТВ «Сафина»   Общей площадью - 8 615,1м2;  Состоит из 4-х этажных блоков A и B, 2-х этажных студийных блоков C, C-1 и D, D-1, 1-но этажных студийных блоков  E, F и технических блоков G, H. Строительство нового здания для телевидения 'Сафина' стало образцом современного архитектурного и строительного мастерства. Проект реализован с использованием высококачественных материалов, обеспечивающих надежность и долговечность конструкции. В процессе строительства применялись передовые методы и технологии строительства. Особое внимание уделено инновационным архитектурным решениям, которые не только подчеркивают эстетическую привлекательность здания, но и обеспечивают функциональность и комфорт для всех сотрудников. Новое здание телевидения 'Сафина' олицетворяет современный подход к строительству, где гармонично сочетаются качество, инновации и стиль.",
       images: [image2],
       progress: 100,
+      size: "8 615,1",
       category: "completed",
     },
     {
@@ -37,16 +39,17 @@ const projects = [
       description:
         "Энергетический проект, важный для стабилизации энергосистемы региона.",
       images: [image4],
+      size: "8 615,1",
       category: "completed",
       progress: 100,
     },
     {
       title:
         "Строительство здания общежития со столовой для компании \u201cСГЭМ\u201d в городе Нурек",
-      description:
-        "Создание комфортных условий проживания и питания для сотрудников компании.",
+      description:"Создание комфортных условий проживания и питания для сотрудников компании.",
       images: ["https://via.placeholder.com/400x300?text=Project+5"],
       category: "completed",
+      size: "8 615,1",
       progress: 100,
     },
     {
@@ -55,26 +58,30 @@ const projects = [
         "Реконструкция гидроэлектростанции для увеличения мощности и устойчивости энергосистемы.",
       images: ["https://via.placeholder.com/400x300?text=Project+6"],
       category: "completed",
+      size: "8 615,1",
       progress: 100,
     },
   {
     title: "ЖК «МЕХРГОН »",
-    description: "Строительство современного жилого комплекса...",
+    description: "Строительство современного жилого комплекса осуществляется с использованием самых передовых технологий и инновационных решений. Особое внимание уделяется внедрению умных систем управления, обеспечивающих высокий уровень комфорта и безопасности для жителей. В процессе строительства используются экологически чистые материалы и энергоэффективные технологии, что позволяет значительно снизить воздействие на окружающую среду . Общая площадь строительства: 55 891 м Этажность 16 и 18 Здание состоит из 6 блоков: 1 и 2 блок – по 16 этажей; 3, 4 и 5 блок по 18 этажей; 6 блок – парковка 6 этажей надземных и 2 этажей подземных",
     progress: 70,
+    size: "8 615,1",
     images: [image1, image2, image3, image4],
     category: "active", // Category for active projects
   },
   {
     title: "Детское дошкольное учреждение",
-    description: "Строительство нового детского дошкольного учреждения...",
+    description: "Строительство нового детского дошкольного учреждения выполнено с применением самых современных строительных технологий. В проекте использованы инновационные материалы и инженерные решения, которые обеспечивают высокую энергоэффективность и экологическую безопасность здания. Общая площадь строительства : 2500 м 2 Финансирование: АБР",
     progress: 60,
     images: ["https://via.placeholder.com/400x300?text=Smart+City+1"],
     category: "active", // Category for completed projects
+    size: "8 615,1",
   },
   {
     title: "Строительство административного здания прокуратуры города Рогун",
-    description: "Проектирование и строительство административного здания...",
+    description: "Проектирование и строительство административного здания прокуратуры в городе Рогун",
     progress: 40,
+    size: "8 615,1",
     images: ["https://via.placeholder.com/400x300?text=Urban+Farming+1"],
     category: "active",
   },
@@ -127,33 +134,56 @@ const ActiveProjects = () => {
           НАШИ ПРОЕКТЫ
         </h2>
 
-        {/* Filter Buttons */}
-        <div className="flex justify-center space-x-4 mb-6">
-          <button
-            onClick={() => setFilter("all")}
-            className={`px-4 py-2 rounded-lg ${
-              filter === "all" ? "bg-blue-600 text-white" : "bg-gray-300"
-            }`}
-          >
-            Все Проекты
-          </button>
-          <button
-            onClick={() => setFilter("active")}
-            className={`px-4 py-2 rounded-lg ${
-              filter === "active" ? "bg-blue-600 text-white" : "bg-gray-300"
-            }`}
-          >
-            АКТИВНЫЕ ПРОЕКТЫ
-          </button>
-          <button
-            onClick={() => setFilter("completed")}
-            className={`px-4 py-2 rounded-lg ${
-              filter === "completed" ? "bg-blue-600 text-white" : "bg-gray-300"
-            }`}
-          >
-            ЗАВЕРШЕННЫЕ ПРОЕКТЫ
-          </button>
-        </div>
+        {/* Filter Component */}
+<div className="mb-6">
+  {/* For Desktop */}
+  <div className="hidden md:flex justify-center space-x-4">
+    <button
+      onClick={() => setFilter("all")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "all"
+          ? "bg-blue-600 text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+      }`}
+    >
+      Все Проекты
+    </button>
+    <button
+      onClick={() => setFilter("active")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "active"
+          ? "bg-blue-600 text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+      }`}
+    >
+      АКТИВНЫЕ ПРОЕКТЫ
+    </button>
+    <button
+      onClick={() => setFilter("completed")}
+      className={`px-4 py-2 rounded-lg ${
+        filter === "completed"
+          ? "bg-blue-600 text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+      }`}
+    >
+      ЗАВЕРШЕННЫЕ ПРОЕКТЫ
+    </button>
+  </div>
+
+  {/* For Mobile */}
+  <div className="md:hidden">
+    <select
+      value={filter}
+      onChange={(e) => setFilter(e.target.value)}
+      className="w-full px-4 py-2 rounded-lg border-solid border-2 border-gray-300 text-orange-500 bg-white"
+    >
+      <option value="all">Все Проекты</option>
+      <option value="active">АКТИВНЫЕ ПРОЕКТЫ</option>
+      <option value="completed">ЗАВЕРШЕННЫЕ ПРОЕКТЫ</option>
+    </select>
+  </div>
+</div>
+
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -175,7 +205,7 @@ const ActiveProjects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
               </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-orange-500 dark:text-white">
                   {project.title}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
@@ -257,6 +287,9 @@ const ActiveProjects = () => {
               <p className="text-gray-700 dark:text-gray-300">
                 {modalData.description}
               </p>
+              {/* <p className="text-gray-700 dark:text-gray-300">
+                <span className="text-xl text-black">ПЛОШАДЬ:</span> {modalData.size}
+              </p> */}
             </div>
           </motion.div>
         )}

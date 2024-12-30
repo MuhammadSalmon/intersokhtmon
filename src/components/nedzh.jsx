@@ -27,7 +27,7 @@ export default function Nedvizhimost() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold">{service.name}</h3>
+                  <h3 className="text-xl text-orange-500 font-semibold">{service.name}</h3>
                 </div>
                 <p className="text-gray-600">{service.description}</p>
               </div>

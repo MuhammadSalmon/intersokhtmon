@@ -4,30 +4,37 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import image3 from "../assets/2349.jpg";
-import image2 from "../assets/2891.jpg";
+import image3 from "../assets/KCHS.jpg";
+import image2 from "../assets/safina.jpg";
 import image1 from "../assets/background.jpg";
 import Header from "./Navbar";
+
 
 const slides = [
   {
     image: image3,
-    title: "КЛИЕНТО ОРИЕНТИРОВАННАЯ ПОЛИТИКА",
-    description:
-      "Выполнение строительно -монтажных работ общегражданских, промышленных и инфраструктурных объектов",
-  },
+    title: "Национальный центр управления кризисными ситуациями в КЧС и ГО.",
+     },
   {
     image: image2,
-    title: "ПЕРСОНАЛЬНЫЙ МЕНЕДЖМЕНТ",
-    description:
-      "Выполнение строительно -монтажных работ инженерных сетей (водоснабжение , канализация, отопление, вентиляция, пожарная сигнализация и т . д.)",
+    title: "Комплекс современных зданий для размещения государственного  учреждения «ТВ Сафина»",
+   },
+  {
+    image: image2,
+    title: "САНГТУДИНСКАЯ ГЭС-1",
   },
   {
     image: image1,
-    title: "ОПТИМАЛЬНОЕ ЦЕНООБРАЗОВАНИЕ",
-    description:
-      "Выполнение строительно -монтажны х работ гидротехнических сооружений",
-  },
+    title: "Строительство здания общежития со столовой для компании “СГЭМ” в городе Нурек",
+    },
+    {
+      image: image1,
+      title: "Строительство общежития для сотрудников Кайраккумской ГЭС, а также офис и бытовое здание для заказчика в городе Кайраккум",
+      },
+      {
+        image: image1,
+        title: "C 2008 по настоящие время – принимает участье в строительстве Рогунской ГЭС",
+        },
 ];
 const HeroSection = () => {
 const textVariants = {
@@ -80,7 +87,7 @@ const settings = {
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
 
-        <div className="relative z-10 text-center md:text-left px-4 md:px-10 max-w-2xl">
+        <div className="relative z-10 text-center md:text-left px-4 md:px-10 max-w-5xl">
           <motion.h1
             initial="hidden"
             animate={showText ? "visible" : "hidden"}
@@ -89,14 +96,7 @@ const settings = {
           >
             {item.title}
           </motion.h1>
-          <motion.h3
-            initial="hidden"
-            animate={showText ? "visible" : "hidden"}
-            variants={textVariants}
-            className="text-white text-lg sm:text-xl md:text-xl lg:text-xl font-bold mb-4 md:mb-6 leading-snug"
-          >
-            {item.description}
-          </motion.h3>
+          
 
           <motion.div
             initial="hidden"
@@ -105,7 +105,7 @@ const settings = {
             className="flex justify-center md:justify-start"
           >
             <a
-              href="#about"
+              href="#active"
               className="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-white hover:m-4 hover:text-blue-500 transition"
             >
               Подробнее

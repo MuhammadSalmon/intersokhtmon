@@ -5,9 +5,41 @@ import image3 from "../assets/about_3.avif";
 import img1 from '../assets/background.jpg';
 const AboutUs = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleExpand = () => {
-    setIsExpanded((prev) => !prev);
+  const sections = [
+    {
+      title: "ИСТОРИЯ",
+      content: [
+        "В 2005 году компания была основана как (Интерcтрой) дочерняя структура ИнтерРАО (Россия) для строительства Сангтудинской ГЭС 1.",
+        "В 2009 году компания была переименована в ООО «Интерсохтмон» для участия в строительстве Рогунской ГЭС.",
+        "В период 2005-2009 годы компания участвовала в строительстве Сангтудинской ГЭС-1.",
+        "C 2009 по 2021 годы – ремонтно-восстановительные работы Сангтудинской ГЭС-1.",
+        "C 2008 года по настоящее время – принимает участие в строительстве Рогунской ГЭС.",
+        "Также, в настоящее время, компания реализует проекты в сфере гражданского и инфраструктурного строительства на территории Республики Таджикистан.",
+      ],
+    },
+    {
+      title: "НАШ ОПЫТЬ",
+      content: [
+        "Выполнение строительно-монтажных работ гражданских, промышленных и инфраструктурных объектов.",
+        "Выполнение строительно-монтажных работ инженерных сетей (водоснабжение, канализация, отопление, вентиляция, пожарная сигнализация и т.д.).",
+        "Производство строительных материалов (в том числе инертных материалов, товарного бетона и железобетонных изделий).",
+        "Выполнение строительно-монтажных работ гидротехнических сооружений.",
+        "Предоставление транспортных услуг: (самосвалы, миксеры-бетоновозы, экскаваторы, погрузчики, автомобильные и башенные краны и т.д.).",
+      ],
+    },
+    {
+      title: "НАША МИССИЯ",
+      content: [
+        "Мы стремимся быть одной из лучших отечественных компаний, предлагая эффективные решения, которые способствуют развитию бизнеса наших клиентов и росту общественного благосостояния.",
+        "Творческая и благоприятная атмосфера, пронизывающая всю работу нашей Компании, в которой сотрудники могут максимально раскрыть и развивать свои способности, приобрести новые знания и навыки, является предпосылкой для успеха и плодотворной работы нашей команды профессионалов.",
+      ],
+    },
+  ];
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
@@ -25,51 +57,36 @@ const AboutUs = () => {
           <div className="w-3 h-1 bg-orange-500"></div>
           <div className="w-3 h-1 bg-orange-500"></div>
         </div>
+        
       </h2>
-      <p className="text-orange-500 text-lg leading-relaxed">
-        <span className="font-extrabold text-3xl text-orange-500 tracking-wider text-shadow-md">
-          ИНТЕРСОХТМОН
-        </span>{" "}
-        – это инженерно-строительная компания, предлагающая комплекс
-        строительных услуг и технических консультаций по широкому спектру сфер
-        применения.
-      </p>
-      <p className="text-orange-500 text-lg leading-relaxed">
-        В 2005 году компания была основана как (Интерcтрой) дочерняя структура
-        ИнтерРАО (Россия) для строительства Сангтудинской ГЭС 1.
-      </p>
-      <p className="text-orange-500 text-lg leading-relaxed">
-        В 2009 году компания была переименована в ООО «Интерсохтмон» для участия
-        в строительстве Рогунской ГЭС.
-      </p>
+      <p className="text-xl text-blue-500"><span className="text-2xl text-orange-500">ИНТЕРСОХТМОН</span> – это инженерно-строительная компания, предлагающая комплекс строительных услуг и технических консультаций по широкому спектру сфер применения.</p>
 
-      {isExpanded && (
-        <ul className="text-orange-500 text-lg leading-relaxed space-y-2 list-disc pl-6">
-          <li>
-            В период 2005-2009 годы компания участвовала в строительстве
-            Сангтудинской ГЭС-1.
-          </li>
-          <li>
-            C 2009 по 2021 годы – ремонтновосстановительные работы Сангтудинской
-            ГЭС-1.
-          </li>
-          <li>
-            C 2008 года по настоящее время – участие в строительстве Рогунской
-            ГЭС.
-          </li>
-          <li>
-            Компания реализует проекты в сфере гражданского и инфраструктурного
-            строительства на территории Республики Таджикистан.
-          </li>
-        </ul>
-      )}
-
-      <button
-        onClick={toggleExpand}
-        className="bg-blue-600 text-orange-500 hover:bg-white hover:text-orange-500 hover:m-4  font-semibold px-6 py-2 rounded-md transition duration-300"
-      >
-        {isExpanded ? "Меньше" : "Больше"}
-      </button>
+      <div className="max-w-2xl mx-auto my-8">
+      {sections.map((section, index) => (
+        <div key={index} className="border-b border-orange-500">
+          <button
+            onClick={() => toggleAccordion(index)}
+            className="w-full flex justify-between items-center py-4 text-left text-lg font-semibold text-orange-500"
+          >
+            {section.title}
+            <span
+              className={`transform transition-transform ${
+                activeIndex === index ? "rotate-180" : "rotate-0"
+              }`}
+            >
+              ▼
+            </span>
+          </button>
+          {activeIndex === index && (
+            <div className="px-4 py-2 text-blue-500 space-y-2">
+              {section.content.map((sentence, i) => (
+                <p key={i}>{sentence}</p>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
     </div>
 
         {/* Images */}

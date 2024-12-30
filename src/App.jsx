@@ -20,20 +20,21 @@ export default function App() {
       <section id="about" className="">
         <AboutUs />
       </section>
+      
       <section id="statistics" className="">
         <Statistics />
       </section>
       {/* Services Section */}
-      
+      <section id="services" style={{"height": "80vh;"}} className="">
+        <Services />
+      </section>
 
       {/* Completed Projects Section */}
       
       <section id="active"  className="">
         <ActiveProjects />
       </section>
-      <section id="services" style={{"height": "80vh;"}} className="">
-        <Services />
-      </section>
+      
 
       <section id="nedzh" style={{"height": "80vh;"}} className="">
         <Nedvizhimost />

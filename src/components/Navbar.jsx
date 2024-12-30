@@ -8,7 +8,7 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const sections = ['about', 'services', 'projects', 'home', "nedzh"];
+  const sections = ['about', 'services', 'projects', 'home', "nedzh", "active"];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -84,7 +84,7 @@ const Header = () => {
           </a>
         )}
 
-        <div className="flex md:hidden w-full items-center justify-between">
+        <div className="flex md:hidden w-full items-center justify-between mx-4 my-1">
           <a href="/" className="flex items-center">
             <img className="h-8" src={logo} alt="ТГЕМ лого" />
           </a>
@@ -120,7 +120,7 @@ const Header = () => {
             УСЛУГИ
           </a>
           <a
-            href="#projects"
+            href="#active"
             className={`hover:text-blue-500 ${
               isActive('projects') ? 'bg-blue- text-gray-700 100 rounded-md px-3 py-1' : ''
             }`}
@@ -139,7 +139,7 @@ const Header = () => {
       </div>
       
       {isMobileMenuOpen && (
-        <nav className="bg-gray-100 dark md:hidden">
+        <nav className="bg-gray-100 dark md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <a
@@ -183,6 +183,17 @@ const Header = () => {
                 onClick={toggleMobileMenu}
               >
                 ПРОЕКТЫ
+              </a>
+            </li>
+            <li>
+              <a
+                href="#nedzh"
+                className={`hover:text-blue-500 ${
+                  isActive('nedzh') ? 'bg-blue- text-gray-700 100 px-3 py-1 rounded-md' : ''
+                }`}
+                onClick={toggleMobileMenu}
+              >
+                НЕДВИЖИМОСТЬ
               </a>
             </li>
           </ul>
