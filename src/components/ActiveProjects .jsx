@@ -117,6 +117,7 @@ const ActiveProjects = () => {
       );
     }
   };
+  //  HI 
 
   // Filter projects based on selected filter
   const filteredProjects =
@@ -126,7 +127,7 @@ const ActiveProjects = () => {
 
   return (
     <section
-      className="py-12 h-auto from-white to-blue-800 dark:bg-gray-900"
+      className="py-12 h-auto from-white to-blue-800 "
       
     >
       <div className="container mx-auto px-6">
