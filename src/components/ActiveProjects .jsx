@@ -91,7 +91,7 @@ const projects = [
 const ActiveProjects = () => {
   const [modalData, setModalData] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [filter, setFilter] = useState("all"); // Filter state
+  const [filter, setFilter] = useState("active"); // Filter state
   
   const handleOpenModal = (project) => {
     setModalData(project);
