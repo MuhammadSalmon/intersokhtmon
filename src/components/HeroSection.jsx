@@ -68,7 +68,7 @@ const settings = {
   
 
   return (
-    <div className="relative w-full  h-screen overflow-hidden">
+    <div className="relative w-full  h-[60vh] md:h-screen overflow-hidden">
       {/* Header */}
       <div className="absolute top-0 left-0 w-full z-30">
         <Header />
@@ -77,43 +77,42 @@ const settings = {
       {/* Slideshow */}
       <Slider {...settings}>
   {slides.map((item, index) => (
-    <div className="h-[120vh]" key={index}>
-      <div
-        className="relative flex items-center justify-center md:justify-start h-full w-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${item.image})`,
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-
-        <div className="relative z-10 text-center md:text-left px-4 md:px-10 max-w-5xl">
-          <motion.h1
-            initial="hidden"
-            animate={showText ? "visible" : "hidden"}
-            variants={textVariants}
-            className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold mb-4 md:mb-6 "
-          >
-            {item.title}
-          </motion.h1>
-          
-
-          <motion.div
-            initial="hidden"
-            animate={showText ? "visible" : "hidden"}
-            variants={buttonVariants}
-            className="flex justify-center md:justify-start"
-          >
-            <a
-              href="#projects"
-              className="px-6 py-3 text-sm font-medium text-white bg-customPurple rounded-md hover:bg-white hover:m-4 hover:text-blue-500 transition"
-            >
-              Подробнее
-            </a>
-          </motion.div>
-        </div>
-      </div>
-    </div>
+   <div className="h-[60vh] md:h-[120vh]" key={index}>
+   <div
+     className="relative flex items-center justify-center md:justify-start h-full w-full bg-cover bg-center"
+     style={{
+       backgroundImage: `url(${item.image})`,
+       backgroundRepeat: "no-repeat",
+     }}
+   >
+     <div className="absolute inset-0 bg-black opacity-50"></div>
+ 
+     <div className="relative z-10 text-center md:text-left px-4 md:px-10 max-w-5xl">
+       <motion.h1
+         initial="hidden"
+         animate={showText ? "visible" : "hidden"}
+         variants={textVariants}
+         className="text-white text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold mb-4 md:mb-6 "
+       >
+         {item.title}
+       </motion.h1>
+ 
+       <motion.div
+         initial="hidden"
+         animate={showText ? "visible" : "hidden"}
+         variants={buttonVariants}
+         className="flex justify-center md:justify-start"
+       >
+         <a
+           href="#projects"
+           className="px-6 py-3 text-sm font-medium text-white bg-customPurple rounded-md hover:bg-white hover:m-4 hover:text-blue-500 transition"
+         >
+           Подробнее
+         </a>
+       </motion.div>
+     </div>
+   </div>
+ </div>
   ))}
 </Slider>
 

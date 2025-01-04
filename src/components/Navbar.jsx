@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
+import logo_mob from '../assets/logo-mob.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -88,14 +89,14 @@ const Header = () => {
 
         <div className="flex md:hidden w-full items-center justify-between mx-4 my-1">
           <a href="/" className="flex items-center">
-            <img className="h-8" src={logo} alt="ТГЕМ лого" />
+            <img className="h-8" src={logo_mob} alt="ТГЕМ лого" />
           </a>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+            <FontAwesomeIcon className='text-white' icon={isMobileMenuOpen ? faTimes : faBars} />
           </button>
         </div>
 
-        <nav className={`hidden md:flex items-center text-slate-100 space-x-8 text-lg`}>
+        <nav className={`hidden md:flex items-center text-slate-100 sticky space-x-8 text-lg`}>
           <a
             href="/"
             className={`hover:text-blue-500  hover:border-t-2 hover:border-orange-500 ${isActive('home') ? ' text-gray-700 ' : ''}`}
@@ -130,7 +131,7 @@ const Header = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <nav className="bg-gray-100  md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
+        <nav className="bg-gray-100 text-slate-100  md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <a

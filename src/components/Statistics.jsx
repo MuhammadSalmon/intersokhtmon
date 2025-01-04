@@ -99,9 +99,9 @@ const Statistics = () => {
 
               {/* Right Content Section */}
               <div className="ml-6">
-                <p className="text-lg font-semibold text-orange-200">{stat.title}</p>
+                <p className="text-lg font-semibold text-customPurple">{stat.title}</p>
                 <p
-                  className="text-3xl font-extrabold text-orange-500"
+                  className="text-3xl font-extrabold text-white"
                   ref={(el) => (numberRefs.current[index] = el)}
                   data-stop={stat.value}
                 >
