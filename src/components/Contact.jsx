@@ -51,8 +51,8 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4 py-12">
-      <div className="container mx-auto flex flex-col md:flex-row bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div className="min-h-screen bg-gray-100  flex items-center justify-center px-4 py-12">
+      <div className="container mx-auto flex flex-col md:flex-row bg-white  rounded-lg shadow-lg overflow-hidden">
         {/* Map Section */}
         <div className="w-full md:w-1/2 h-80 md:h-auto relative">
           <iframe
@@ -66,7 +66,7 @@ const ContactPage = () => {
 
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          <h2 className="text-2xl font-bold text-gray-800  mb-4">
             Contact Us
           </h2>
           {isSubmitted ? (
@@ -78,7 +78,7 @@ const ContactPage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-gray-700 "
                 >
                   Your Name
                 </label>
@@ -89,13 +89,13 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full border border-gray-300  rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-gray-700 "
                 >
                   Email
                 </label>
@@ -106,13 +106,13 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full border border-gray-300  rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-gray-700 "
                 >
                   Subject
                 </label>
@@ -123,13 +123,13 @@ const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full border border-gray-300  rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  className="block text-sm font-medium text-gray-700 "
                 >
                   Message
                 </label>
@@ -140,7 +140,7 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="mt-1 block w-full border border-gray-300 dark:border-gray-700 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="mt-1 block w-full border border-gray-300  rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                 ></textarea>
               </div>
               <button

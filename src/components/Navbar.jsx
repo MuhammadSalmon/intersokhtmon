@@ -45,7 +45,7 @@ const Header = () => {
     <header
       className={`${
         isSticky ? 'fixed top-0 left-0 right-0 z-50' : ''
-      } bg-gradient-to-r from-white to-blue-800 shadow-md`}
+      } bg-gradient-to-r from-white to-customPurple shadow-md`}
     >
       {isRootPage && !isSticky && (
         <div className="bg-transparent border-b hidden md:block">
@@ -98,31 +98,31 @@ const Header = () => {
         <nav className={`hidden md:flex items-center text-slate-100 space-x-8 text-lg`}>
           <a
             href="/"
-            className={`hover:text-blue-500 ${isActive('home') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
+            className={`hover:text-blue-500  hover:border-t-2 hover:border-orange-500 ${isActive('home') ? ' text-gray-700 ' : ''}`}
           >
             ГЛАВНОЕ
           </a>
           <a
             href="#about"
-            className={`hover:text-blue-500 ${isActive('about') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? ' text-gray-700  ' : ''}`}
           >
             О НАС
           </a>
           <a
             href="#services"
-            className={`hover:text-blue-500 ${isActive('services') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-gray-700  ' : ''}`}
           >
             УСЛУГИ
           </a>
           <a
             href="#projects"
-            className={`hover:text-blue-500 ${isActive('projects') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-gray-700' : ''}`}
           >
             ПРОЕКТЫ
           </a>
           <a
             href="#nedzh"
-            className={`hover:text-blue-500 ${isActive('nedzh') ? 'bg-blue-100 text-gray-700 rounded-md px-3 py-1' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-gray-700  ' : ''}`}
           >
             НЕДВИЖИМОСТЬ
           </a>
@@ -130,12 +130,12 @@ const Header = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <nav className="bg-gray-100 dark md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
+        <nav className="bg-gray-100  md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <a
                 href="/"
-                className={`hover:text-blue-500 ${isActive('home') ? 'text-gray-700 px-3 py-1 rounded-md' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('home') ? 'text-gray-700  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ГЛАВНОЕ
@@ -144,7 +144,7 @@ const Header = () => {
             <li>
               <a
                 href="#about"
-                className={`hover:text-blue-500 ${isActive('about') ? 'text-gray-700 px-3 py-1 rounded-md' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? 'text-gray-700  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 О НАС
@@ -153,7 +153,7 @@ const Header = () => {
             <li>
               <a
                 href="#services"
-                className={`hover:text-blue-500 ${isActive('services') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-gray-700  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 УСЛУГИ
@@ -162,7 +162,7 @@ const Header = () => {
             <li>
               <a
                 href="#active"
-                className={`hover:text-blue-500 ${isActive('projects') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-gray-700  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ПРОЕКТЫ
@@ -171,7 +171,7 @@ const Header = () => {
             <li>
               <a
                 href="#nedzh"
-                className={`hover:text-blue-500 ${isActive('nedzh') ? 'bg-blue-100 text-gray-700 px-3 py-1 rounded-md' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-gray-700  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 НЕДВИЖИМОСТЬ

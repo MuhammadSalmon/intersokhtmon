@@ -13,7 +13,7 @@ export default function Nedvizhimost() {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl text-orange-400 font-bold text-center mb-4 animate-fade-in">НЕДВИЖИМОСТЬ</h1>
+        <h1 className="text-4xl text-customPurple font-bold text-center mb-4 animate-fade-in">НЕДВИЖИМОСТЬ</h1>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in animation-delay-200">
           Мы предлагаем полный спектр услуг в сфере недвижимости. От покупки и продажи до аренды и управления - доверьте нам ваши потребности в недвижимости.
         </p>
@@ -22,12 +22,12 @@ export default function Nedvizhimost() {
             <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up" style={{animationDelay: `${index * 100}ms`}}>
               <div className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center animate-pulse">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center ">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-24  text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
                     </svg>
                   </div>
-                  <h3 className="text-xl text-orange-500 font-semibold">{service.name}</h3>
+                  <h3 className="text-xl text-customPurple  font-semibold">{service.name}</h3>
                 </div>
                 <p className="text-gray-600">{service.description}</p>
               </div>

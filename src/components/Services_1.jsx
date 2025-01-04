@@ -97,21 +97,21 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-800 bg-cover dark:bg-gray-900" 
+    <section className="py-12 bg-gray-800 bg-cover " 
     style={{
           backgroundImage: `url(${img1})`,
           height: "80vh;"
         }}
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-900 text-center dark:text-gray-100 mb-6">
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
         НАШИ УСЛУГИ
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+              className="bg-white  rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -126,10 +126,10 @@ const ServicesPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
               </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-gray-900 ">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                <p className="text-gray-600  text-sm mt-2">
                   {project.description.length > 150
                     ? `${project.description.slice(0, 150)}...`
                     : project.description}
@@ -167,12 +167,12 @@ const ServicesPage = () => {
           onClick={handleCloseModal}
         >
           <div
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
+            className="bg-white  rounded-lg shadow-lg p-6 max-w-lg w-full relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
               aria-label="Close"
             >
               ✖
@@ -198,10 +198,10 @@ const ServicesPage = () => {
                 <FaChevronRight />
               </button>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
               {modalData.title}
             </h3>
-            <p className="text-gray-700 dark:text-gray-300">
+            <p className="text-gray-700 ">
               {modalData.description}
             </p>
           </div>

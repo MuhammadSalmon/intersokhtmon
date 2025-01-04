@@ -12,7 +12,7 @@ import {
   CubeTransparentIcon,
   ClipboardIcon,
 } from '@heroicons/react/24/outline';
-import './animations.css'
+// import './animations.css'
 const services = [
   {
     name: 'УПРАВЛЕНИЕ ПРОЕКТОМ',
@@ -73,7 +73,7 @@ export default function Services() {
   return (
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-orange-400 mb-4 animate-fade-in">НАШИ УСЛУГИ</h2>
+        <h2 className="text-3xl font-bold text-center text-customPurple mb-4 animate-fade-in">НАШИ УСЛУГИ</h2>
         <p className="text-center text-gray-600 mb-8 max-w-5xl mx-auto animate-fade-in animation-delay-200">
         ООО «Интерсохтмон», объединяя опыт и знания специалистов высокого класса, современное программное обеспечение и высокоточные приборы последнего поколения, интегрируемые с новейшими технологиями и уникальными решениями, осуществляет полный комплекс профессиональных строительных и инжиниринговых услуг различного уровня сложности и предоставляет качественные результаты работ, строго соответствующие нормативным требованиям
              </p>
@@ -82,10 +82,10 @@ export default function Services() {
             <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in-up" style={{animationDelay: `${index * 100}ms`}}>
               <div className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-blue-500 w-12 h-12 rounded-full flex items-center justify-center animate-pulse">
-                  <service.icon className="h-8 w-8 text-blue-600" />
+                  <div className="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center ">
+                  <service.icon className="h-8 w-16 text-white" />
                   </div>
-                  <h3 className="text-xl text-orange-500 font-semibold">{service.name}</h3>
+                  <h3 className="text-xl text-customPurple font-semibold">{service.name}</h3>
                 </div>
                 <p className="text-gray-600">{service.description}</p>
               </div>

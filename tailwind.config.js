@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        customPurple: 'rgb(49 39 131)', // Define the color name
+      },
       animation: {
         fadeIn: "fadeIn 2s ease-in-out",
       },

@@ -131,7 +131,7 @@ const ActiveProjects = () => {
       
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-orange-500 text-center dark:text-slate-100 mb-6">
+        <h2 className="text-3xl font-bold text-customPurple text-center  mb-6">
           НАШИ ПРОЕКТЫ
         </h2>
 
@@ -143,8 +143,8 @@ const ActiveProjects = () => {
       onClick={() => setFilter("all")}
       className={`px-4 py-2 rounded-lg ${
         filter === "all"
-          ? "bg-blue-600 text-white"
-          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+          ? "bg-customPurple text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-customPurple "
       }`}
     >
       Все Проекты
@@ -153,8 +153,8 @@ const ActiveProjects = () => {
       onClick={() => setFilter("active")}
       className={`px-4 py-2 rounded-lg ${
         filter === "active"
-          ? "bg-blue-600 text-white"
-          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+          ? "bg-customPurple text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-customPurple "
       }`}
     >
       АКТИВНЫЕ ПРОЕКТЫ
@@ -163,8 +163,8 @@ const ActiveProjects = () => {
       onClick={() => setFilter("completed")}
       className={`px-4 py-2 rounded-lg ${
         filter === "completed"
-          ? "bg-blue-600 text-white"
-          : "bg-white border-solid border-2 border-gray-300 text-orange-500"
+          ? "bg-customPurple text-white"
+          : "bg-white border-solid border-2 border-gray-300 text-customPurple "
       }`}
     >
       ЗАВЕРШЕННЫЕ ПРОЕКТЫ
@@ -176,11 +176,11 @@ const ActiveProjects = () => {
     <select
       value={filter}
       onChange={(e) => setFilter(e.target.value)}
-      className="w-full px-4 py-2 rounded-lg border-solid border-2 border-gray-300 text-orange-500 bg-white"
+      className="w-full px-4 py-2 rounded-lg border-solid  border-customPurple border-2 text-customPurple bg-white"
     >
-      <option value="all">Все Проекты</option>
-      <option value="active">АКТИВНЫЕ ПРОЕКТЫ</option>
-      <option value="completed">ЗАВЕРШЕННЫЕ ПРОЕКТЫ</option>
+      <option className="border-customPurple border-2" value="all">Все Проекты</option>
+      <option className="border-customPurple border-2" value="active">АКТИВНЫЕ ПРОЕКТЫ</option>
+      <option className="border-customPurple border-2" value="completed">ЗАВЕРШЕННЫЕ ПРОЕКТЫ</option>
     </select>
   </div>
 </div>
@@ -191,7 +191,7 @@ const ActiveProjects = () => {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
+              className="bg-white  rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105 overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -206,10 +206,10 @@ const ActiveProjects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
               </div>
               <div className="p-4">
-                <h3 className="text-xl font-semibold text-orange-500 dark:text-white">
+                <h3 className="text-xl font-semibold text-customPurple ">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                <p className="text-gray-600 text-sm mt-2">
                   {project.description.length > 150
                     ? `${project.description.slice(0, 150)}...`
                     : project.description}
@@ -233,7 +233,7 @@ const ActiveProjects = () => {
                 </div>
                 <button
                   onClick={() => handleOpenModal(project)}
-                  className="text-blue-500 hover:underline text-sm font-medium mt-4 block"
+                  className="text-customPurple hover:underline text-sm font-medium mt-4 block"
                 >
                   Подробнее
                 </button>
@@ -245,18 +245,18 @@ const ActiveProjects = () => {
         {/* Modal */}
         {modalData && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+            className="fixed inset-0  z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={handleCloseModal}
           >
             <div
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-lg w-full relative"
+              className="bg-white  rounded-lg shadow-lg p-6 max-w-lg w-full relative"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={handleCloseModal}
-                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 "
                 aria-label="Close"
               >
                 ✖
@@ -282,13 +282,13 @@ const ActiveProjects = () => {
                   <FaChevronRight />
                 </button>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-2xl font-bold text-customPurple  mb-4">
                 {modalData.title}
               </h3>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-gray-700 ">
                 {modalData.description}
               </p>
-              {/* <p className="text-gray-700 dark:text-gray-300">
+              {/* <p className="text-gray-700 ">
                 <span className="text-xl text-black">ПЛОШАДЬ:</span> {modalData.size}
               </p> */}
             </div>
