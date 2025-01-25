@@ -3,6 +3,7 @@ import product from '../assets/product.svg';
 import worker from '../assets/worker.svg';
 import clients from '../assets/clients.svg';
 import img from '../assets/stats.jpg';
+import img1 from '../assets/bg_stats.jpg';
 
 // Sample statistics data
 
@@ -71,42 +72,39 @@ const Statistics = () => {
       }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
 
       <div className="container relative z-10 mx-auto text-center">
-        <h2 className="text-3xl font-bold text-orange-500 mb-4 relative inline-block">
-          <span className="absolute -left-20 right-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
-          <span className="absolute -left-20 right-full mt-1 border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
+        <h2 className="text-3xl font-bold text-customPurple mb-4 relative inline-block">
+          <span className="absolute -left-24 right-full mt-1 border-b-4 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
           Статистика
-          <span className="absolute right-0 left-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
-          <span className="absolute right-0 mt-1 left-full border-b-2 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
+          <span className="absolute right-24 mt-1 left-full ml-4 border-b-4 border-orange-500 top-1/2 transform -translate-y-1/2 w-20"></span>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-8">
           {statisticsData.map((stat, index) => (
             <div
               key={index}
-              className="w-72 p-6 bg-gradient-to-br from-white  to-blue-700 bg-opacity-80 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center"
+              className="w-72 p-6 bg-customPurple rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center"
+              style={{
+                backgroundImage: `url(${img1})`,
+              }}
             >
+              
               {/* Left Image Section */}
               <div className="flex-shrink-0">
-                <img
-                  src={stat.icon}
-                  alt={stat.title}
-                  className="w-16 h-16 rounded-full bg-orange-500 p-2 shadow-md"
-                />
-              </div>
-
-              {/* Right Content Section */}
-              <div className="ml-6">
-                <p className="text-lg font-semibold text-customPurple">{stat.title}</p>
-                <p
-                  className="text-3xl font-extrabold text-white"
+              <p
+                  className="text-5xl font-extrabold text-white"
                   ref={(el) => (numberRefs.current[index] = el)}
                   data-stop={stat.value}
                 >
                   0
                 </p>
+              </div>
+
+              {/* Right Content Section */}
+              <div className="ml-6">
+                <p className="text-2xl font-semibold text-white">{stat.title}</p>
+               
               </div>
     </div>
   ))}

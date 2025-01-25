@@ -12,7 +12,7 @@ export default function App() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section id="home" className=" ">
+      <section id="home" className="h-screen bg-gray-100 flex items-center justify-center">
         <HeroSection />
       </section>
 

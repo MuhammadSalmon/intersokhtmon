@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import image1 from "../assets/about_1.webp";
-import image2 from "../assets/about_2.jpg";
-import image3 from "../assets/about_3.avif";
-import img1 from '../assets/background.jpg';
+import image1 from "../assets/about_img1.jpg";
+import image2 from "../assets/about_img2.jpg";
+import image3 from "../assets/about_img3.jpg";
 const AboutUs = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -46,7 +45,7 @@ const AboutUs = () => {
     <section  className="bg-white bg-cover py-16 px-6 md:py-16 md:px-12 lg:px-24" 
     
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-2 gap-6 items-center ">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 gap-40 items-center ">
         {/* Text Content */}
         <div className="col-span-2 md:col-span-1 py-10 space-y-6">
       <h2 className="text-3xl md:text-4xl font-bold text-customPurple relative pb-4">
@@ -89,33 +88,35 @@ const AboutUs = () => {
     </div>
     </div>
 
-        {/* Images */}
-        <div className="grid grid-cols-2 gap-6 col-span-2 md:col-span-1">
-          {/* First Image */}
-          <div className="row-span-2">
-            <img
-              src={image1}
-              alt="Construction Project"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-          {/* Second Image */}
-          <div className="row-span-2">
-            <img
-              src={image2}
-              alt="Project Detail 1"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-          {/* Third Image */}
-          <div className="col-span-2 flex justify-center items-center">
-            <img
-              src={image3}
-              alt="Project Detail 2"
-              className="w-2/3 h-auto object-cover rounded-lg shadow-lg"
-            />
-          </div>
-        </div>
+      {/* Images */}
+<div className="grid grid-cols-2 gap-4">
+  {/* Top Left Image */}
+  <div className="col-span-1">
+    <img
+      src={image1}
+      alt="Construction Project"
+      className="w-full h-[200px] object-cover rounded-lg shadow-lg"
+    />
+  </div>
+  {/* Top Right Image */}
+  <div className="col-span-1">
+    <img
+      src={image2}
+      alt="Project Detail 1"
+      className="w-full h-[200px] object-cover rounded-lg shadow-lg"
+    />
+  </div>
+  {/* Bottom Full-Width Image */}
+  <div className="col-span-2">
+    <img
+      src={image3}
+      alt="Project Detail 2"
+      className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+    />
+  </div>
+</div>
+
+
       </div>
     </section>
   );
