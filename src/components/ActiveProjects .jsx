@@ -245,57 +245,60 @@ const ActiveProjects = () => {
 
         {/* Modal */}
         {modalData && (
-          <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={handleCloseModal}
+  <motion.div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    onClick={handleCloseModal}
+  >
+    <div
+      className="bg-white rounded-lg shadow-lg p-4 max-w-lg w-full relative mx-4 sm:mx-6 lg:mx-8 max-h-[90vh] overflow-y-auto"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={handleCloseModal}
+        className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+        aria-label="Close"
+      >
+        ✖
+      </button>
+
+      <div className="relative">
+        <img
+          src={modalData.images[currentImageIndex]}
+          alt={`${modalData.title} Slide ${currentImageIndex + 1}`}
+          className="w-full h-64 sm:h-80 lg:h-[400px] object-cover rounded-md mb-4"
+        />
+        <button
+          onClick={handlePrevImage}
+          className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+          aria-label="Previous Image"
         >
-          <div
-            className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative mx-4 sm:mx-6 lg:mx-8 max-h-screen overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={handleCloseModal}
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-              aria-label="Close"
-            >
-              ✖
-            </button>
-            <div className="relative">
-              <img
-                src={modalData.images[currentImageIndex]}
-                alt={`${modalData.title} Slide ${currentImageIndex + 1}`}
-                className="w-full h-64 object-cover rounded-md mb-4"
-              />
-              <button
-                onClick={handlePrevImage}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-                aria-label="Previous Image"
-              >
-                <FaChevronLeft />
-              </button>
-              <button
-                onClick={handleNextImage}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-                aria-label="Next Image"
-              >
-                <FaChevronRight />
-              </button>
-            </div>
-            <h3 className="text-2xl font-bold text-customPurple mb-4">{modalData.title}</h3>
-        
-            {/* Description with Show More / Show Less */}
-            <DescriptionWithToggle description={modalData.description} />
-        
-            {/* Uncomment for Size Information */}
-            {/* <p className="text-gray-700 mt-4">
-              <span className="text-xl text-black">ПЛОШАДЬ:</span> {modalData.size}
-            </p> */}
-          </div>
-        </motion.div>
-        
-        )}
+          <FaChevronLeft />
+        </button>
+        <button
+          onClick={handleNextImage}
+          className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+          aria-label="Next Image"
+        >
+          <FaChevronRight />
+        </button>
+      </div>
+
+      <h3 className="text-2xl sm:text-3xl font-bold text-customPurple mb-4">{modalData.title}</h3>
+
+      {/* Description with Show More / Show Less */}
+      <DescriptionWithToggle description={modalData.description} />
+
+      {/* Uncomment for Size Information */}
+      {/* <p className="text-gray-700 mt-4">
+        <span className="text-xl text-black">ПЛОШАДЬ:</span> {modalData.size}
+      </p> */}
+    </div>
+  </motion.div>
+)}
+
+
       </div>
     </section>
   );
