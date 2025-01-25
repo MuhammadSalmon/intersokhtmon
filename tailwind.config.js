@@ -11,12 +11,14 @@ export default {
       },
       animation: {
         fadeIn: "fadeIn 2s ease-in-out",
+     
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: 0, transform: "translateY(30px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+       
       },
     },
   },
