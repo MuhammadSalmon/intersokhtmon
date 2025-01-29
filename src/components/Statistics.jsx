@@ -88,10 +88,10 @@ const Statistics = () => {
   >
     {/* Background Image with 10% Opacity and Larger Size */}
     <div
-      className="absolute inset-0 bg-center opacity-10"
+      className="absolute inset-0 bg-center opacity-5"
       style={{
         backgroundImage: `url(${img1})`,
-        backgroundSize: '150%', // Increase this value to zoom in
+        backgroundSize: '120%', // Increase this value to zoom in
         backgroundPosition: 'center', // Keep the image centered
       }}
     ></div>
