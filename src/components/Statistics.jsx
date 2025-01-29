@@ -3,7 +3,7 @@ import product from '../assets/product.svg';
 import worker from '../assets/worker.svg';
 import clients from '../assets/clients.svg';
 import img from '../assets/stats.jpg';
-import img1 from '../assets/bg_stats.jpg';
+import img1 from '../assets/lines.png';
 
 // Sample statistics data
 
@@ -81,33 +81,35 @@ const Statistics = () => {
         </h2>
 
         <div className="flex flex-wrap justify-center gap-8">
-          {statisticsData.map((stat, index) => (
-            <div
-              key={index}
-              className="w-72 p-6 bg-customPurple rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center"
-              style={{
-                backgroundImage: `url(${img1})`,
-              }}
-            >
-              
-              {/* Left Image Section */}
-              <div className="flex-shrink-0">
-              <p
-                  className="text-5xl font-extrabold text-white"
-                  ref={(el) => (numberRefs.current[index] = el)}
-                  data-stop={stat.value}
-                >
-                  0
-                </p>
-              </div>
+        {statisticsData.map((stat, index) => (
+  <div
+    key={index}
+    className="w-72 p-6 rounded-lg bg-customPurple shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center relative overflow-hidden"
+  >
+    <div
+      className="absolute inset-0 bg-cover bg-center opacity-10"
+      style={{
+        backgroundImage: `url(${img1})`,
+      }}
+    ></div>
 
-              {/* Right Content Section */}
-              <div className="ml-6">
-                <p className="text-2xl font-semibold text-white">{stat.title}</p>
-               
-              </div>
+    {/* Left Image Section */}
+    <div className="flex-shrink-0 relative z-10">
+      <p
+        className="text-5xl font-extrabold text-white"
+        ref={(el) => (numberRefs.current[index] = el)}
+        data-stop={stat.value}
+      >
+        0
+      </p>
     </div>
-  ))}
+
+    {/* Right Content Section */}
+    <div className="ml-6 relative z-10">
+      <p className="text-2xl font-semibold text-white">{stat.title}</p>
+    </div>
+  </div>
+))}
 </div>
 
       </div>
