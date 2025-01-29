@@ -86,10 +86,13 @@ const Statistics = () => {
     key={index}
     className="w-72 p-6 rounded-lg bg-customPurple shadow-lg transform transition-all duration-500 hover:scale-105 flex items-center relative overflow-hidden"
   >
+    {/* Background Image with 10% Opacity and Larger Size */}
     <div
-      className="absolute inset-0 bg-cover bg-center opacity-10"
+      className="absolute inset-0 bg-center opacity-10"
       style={{
         backgroundImage: `url(${img1})`,
+        backgroundSize: '150%', // Increase this value to zoom in
+        backgroundPosition: 'center', // Keep the image centered
       }}
     ></div>
 
