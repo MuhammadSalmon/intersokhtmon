@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:w-screen md:flex-row justify-between gap-8 items-center">
         {/* Logo Section */}
         <div className="flex flex-col justify-center items-center md:items-start md:w-1/3">
-          <h3 className="text-xl font-bold mb-4 text-center md:text-left">ООО “ИНТЕРСОХТМОН”</h3>
+          
           <img
             src={logo}
             alt="Logo"
