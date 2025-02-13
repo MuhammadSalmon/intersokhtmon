@@ -66,7 +66,7 @@ const Header = () => {
                 <span className="text-black font-medium">08:00 - 18:00</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold text-slate-800">
+                <span className="font-semibold text-black">
                   Адрес: Республика Таджикистан, г. Душанбе,
                 </span>
                 <a target='_blank' className="text-black hover:underline" href='https://maps.app.goo.gl/mvazyzMnKiLfvS48A'>р. Фирдавси, ул. Гулбутта</a>
