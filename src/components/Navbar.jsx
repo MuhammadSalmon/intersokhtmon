@@ -44,9 +44,9 @@ const Header = () => {
 
   return (
     <header
-      className={`${
+      className={` text-black ${
         isSticky ? 'fixed top-0 left-0 right-0 z-50' : ''
-      } bg-gradient-to-r from-white to-customPurple shadow-md`}
+      } bg-gradient-to-r bg-white text-black shadow-md`}
     >
       {isRootPage && !isSticky && (
         <div className="bg-transparent border-b hidden md:block">
@@ -56,20 +56,20 @@ const Header = () => {
             </a>
             <div className="hidden lg:flex space-x-10 mx-4">
               <div className="flex flex-col">
-                <span className="font-semibold text-slate-100">Телефон:</span>
-                <a href="tel:+992411005555" className="text-slate-100 hover:underline">
+                <span className="font-semibold text-black  ">Телефон:</span>
+                <a href="tel:+992411005555" className="text-black hover:underline">
                   +(992) 988-88-50-01
                 </a>
               </div>
               <div className="border-l-2 border-gray-300 pl-4 flex flex-col">
-                <span className="font-semibold text-slate-100">ДУШ-ШАН:</span>
-                <span className="text-slate-100 font-medium">08:00 - 18:00</span>
+                <span className="font-semibold text-black">ДУШ-ШАН:</span>
+                <span className="text-black font-medium">08:00 - 18:00</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-semibold text-slate-100">
+                <span className="font-semibold text-slate-800">
                   Адрес: Республика Таджикистан, г. Душанбе,
                 </span>
-                <a className="text-slate-100 hover:underline">р. Фирдавси, ул. Гулбутта</a>
+                <a target='_blank' className="text-black hover:underline" href='https://maps.app.goo.gl/mvazyzMnKiLfvS48A'>р. Фирдавси, ул. Гулбутта</a>
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Header = () => {
       >
         {isSticky && (
           <a href="/" className="hidden md:flex items-center">
-            <img className="h-12" src={logo} alt="ИНТЕРСОХТМОН лого" />
+            <img className="h-12" src={logo_mob} alt="ИНТЕРСОХТМОН лого" />
           </a>
         )}
 
@@ -92,38 +92,38 @@ const Header = () => {
             <img className="h-8" src={logo_mob} alt="ТГЕМ лого" />
           </a>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            <FontAwesomeIcon className='text-white' icon={isMobileMenuOpen ? faTimes : faBars} />
+            <FontAwesomeIcon className='text-black text-2xl' icon={isMobileMenuOpen ? faTimes : faBars} />
           </button>
         </div>
 
-        <nav className={`hidden md:flex items-center text-slate-100 sticky space-x-8 text-lg`}>
+        <nav className={`hidden md:flex items-center text-black sticky space-x-8 text-lg`}>
           <a
             href="/"
-            className={`hover:text-blue-500  hover:border-t-2 hover:border-orange-500 ${isActive('home') ? ' text-gray-700 ' : ''}`}
+            className={`hover:text-blue-500  hover:border-t-2 hover:border-orange-500 ${isActive('home') ? ' text-orange-500 ' : ''}`}
           >
             ГЛАВНОЕ
           </a>
           <a
             href="#about"
-            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? ' text-gray-700  ' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? ' text-orange-500  ' : ''}`}
           >
             О НАС
           </a>
           <a
             href="#services"
-            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-gray-700  ' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-orange-500  ' : ''}`}
           >
             УСЛУГИ
           </a>
           <a
             href="#projects"
-            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-gray-700' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-orange-500' : ''}`}
           >
             ПРОЕКТЫ
           </a>
           <a
             href="#nedzh"
-            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-gray-700  ' : ''}`}
+            className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-orange-500  ' : ''}`}
           >
             НЕДВИЖИМОСТЬ
           </a>
@@ -131,12 +131,12 @@ const Header = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <nav className="bg-gray-100 text-slate-100  md:hidden bg-gradient-to-r from-white to-blue-800 shadow-md">
+        <nav className=" bg-white  md:hidden bg-gradient-to-r text-black shadow-md">
           <ul className="flex flex-col items-center space-y-4 py-4 text-lg">
             <li>
               <a
                 href="/"
-                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('home') ? 'text-gray-700  ' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('home') ? 'text-orange-500  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ГЛАВНОЕ
@@ -145,7 +145,7 @@ const Header = () => {
             <li>
               <a
                 href="#about"
-                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? 'text-gray-700  ' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('about') ? 'text-orange-500  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 О НАС
@@ -154,7 +154,7 @@ const Header = () => {
             <li>
               <a
                 href="#services"
-                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-gray-700  ' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('services') ? ' text-orange-500  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 УСЛУГИ
@@ -163,7 +163,7 @@ const Header = () => {
             <li>
               <a
                 href="#active"
-                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-gray-700  ' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('projects') ? ' text-orange-500  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 ПРОЕКТЫ
@@ -172,7 +172,7 @@ const Header = () => {
             <li>
               <a
                 href="#nedzh"
-                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-gray-700  ' : ''}`}
+                className={`hover:text-blue-500 hover:border-t-2 hover:border-orange-500 ${isActive('nedzh') ? ' text-orange-500  ' : ''}`}
                 onClick={toggleMobileMenu}
               >
                 НЕДВИЖИМОСТЬ

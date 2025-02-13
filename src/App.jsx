@@ -42,7 +42,7 @@ export default function App() {
       </section>
 
       {/* Footer Section */}
-      <Footer className="w-full bg-gray-800 text-white" />
+      <Footer className=" bg-gray-800 text-white" />
     </div>
   );
 }

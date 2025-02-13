@@ -257,7 +257,7 @@ const ActiveProjects = () => {
     >
       <button
         onClick={handleCloseModal}
-        className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+        className="absolute top-2 right-2 text-customPurple z-50 hover:text-customPurple"
         aria-label="Close"
       >
         ✖
