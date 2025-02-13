@@ -34,8 +34,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <strong>Адрес:</strong> Республика Таджикистан, г. Душанбе, р.
-              Фирдавси, ул. Гулбутта
+              <strong>Адрес:</strong>
+              <a target='_blank' className=" hover:underline" href='https://maps.app.goo.gl/mvazyzMnKiLfvS48A'> Республика Таджикистан, г. Душанбе, р. Фирдавси, ул. Гулбутта</a>
             </li>
           </ul>
 
