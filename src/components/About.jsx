@@ -7,6 +7,15 @@ import Slider from "react-slick"; // Import Slick Slider
 const AboutUs = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const [loadedImages, setLoadedImages] = useState({
+    image1: false,
+    image2: false,
+    image3: false,
+  });
+
+  const handleImageLoad = (imageKey) => {
+    setLoadedImages((prev) => ({ ...prev, [imageKey]: true }));
+  };
 
   const sections = [
     {
@@ -103,26 +112,50 @@ const AboutUs = () => {
         <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Top Left Image */}
           <div>
+            {!loadedImages.image1 && (
+              <div className="w-full h-[200px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                <span className="text-gray-500">Loading...</span>
+              </div>
+            )}
             <img
               src={image1}
               alt="Construction Project"
-              className="w-full h-[200px] object-cover rounded-lg shadow-lg"
+              className={`w-full h-[200px] object-cover rounded-lg shadow-lg ${
+                !loadedImages.image1 ? "hidden" : ""
+              }`}
+              onLoad={() => handleImageLoad("image1")}
             />
           </div>
           {/* Top Right Image */}
           <div>
+            {!loadedImages.image2 && (
+              <div className="w-full h-[200px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                <span className="text-gray-500">Loading...</span>
+              </div>
+            )}
             <img
               src={image2}
               alt="Project Detail 1"
-              className="w-full h-[200px] object-cover rounded-lg shadow-lg"
+              className={`w-full h-[200px] object-cover rounded-lg shadow-lg ${
+                !loadedImages.image2 ? "hidden" : ""
+              }`}
+              onLoad={() => handleImageLoad("image2")}
             />
           </div>
           {/* Bottom Full-Width Image */}
           <div className="col-span-2">
+            {!loadedImages.image3 && (
+              <div className="w-full h-[300px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                <span className="text-gray-500">Loading...</span>
+              </div>
+            )}
             <img
               src={image3}
               alt="Project Detail 2"
-              className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+              className={`w-full h-[300px] object-cover rounded-lg shadow-lg ${
+                !loadedImages.image3 ? "hidden" : ""
+              }`}
+              onLoad={() => handleImageLoad("image3")}
             />
           </div>
         </div>
@@ -131,24 +164,48 @@ const AboutUs = () => {
         <div className="lg:hidden">
           <Slider {...settings}>
             <div>
+              {!loadedImages.image1 && (
+                <div className="w-full h-[300px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                  <span className="text-gray-500">Loading...</span>
+                </div>
+              )}
               <img
                 src={image1}
                 alt="Construction Project"
-                className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+                className={`w-full h-[300px] object-cover rounded-lg shadow-lg ${
+                  !loadedImages.image1 ? "hidden" : ""
+                }`}
+                onLoad={() => handleImageLoad("image1")}
               />
             </div>
             <div>
+              {!loadedImages.image2 && (
+                <div className="w-full h-[300px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                  <span className="text-gray-500">Loading...</span>
+                </div>
+              )}
               <img
                 src={image2}
                 alt="Project Detail 1"
-                className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+                className={`w-full h-[300px] object-cover rounded-lg shadow-lg ${
+                  !loadedImages.image2 ? "hidden" : ""
+                }`}
+                onLoad={() => handleImageLoad("image2")}
               />
             </div>
             <div>
+              {!loadedImages.image3 && (
+                <div className="w-full h-[300px] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg">
+                  <span className="text-gray-500">Loading...</span>
+                </div>
+              )}
               <img
                 src={image3}
                 alt="Project Detail 2"
-                className="w-full h-[300px] object-cover rounded-lg shadow-lg"
+                className={`w-full h-[300px] object-cover rounded-lg shadow-lg ${
+                  !loadedImages.image3 ? "hidden" : ""
+                }`}
+                onLoad={() => handleImageLoad("image3")}
               />
             </div>
           </Slider>
